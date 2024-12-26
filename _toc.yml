@@ -3,7 +3,17 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+- caption: General info
+  chapters:
+  - file: glossary.md
+- caption: The Book of Why (Judea Pearl)
+  chapters:
+  - file: placeholder_1.md
+    sections:
+    - file: placeholder_2.md
+- caption: Concepts
+  chapters:
+  - file: placeholder_3.md
+    sections:
+    - file: placeholder_4.md
