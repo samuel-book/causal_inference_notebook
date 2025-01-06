@@ -42,6 +42,9 @@
 
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
 
+* **Target trial emulation**: Target trial emulation is a framework that applies the principles of randomized clinical trials (RCTs) to observational data to estimate the causal effects of interventions. The process begins by designing a hypothetical randomized trial (the "target trial") that would ideally answer the research question. This protocol includes: 1) Eligibility criteria, 2) Treatment strategies
+Assignment procedures, 3) Follow-up period, 4) Outcome definitions, 5) Statistical analysis plan. 
+
 
 
 
