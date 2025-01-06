@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bayes and causal inference &#8212; Causal Inference Notebook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pearl/04a_bayes_theorem';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bayesian networks" href="04b_bayesian_networks.html" />
+    <link rel="prev" title="From Buccaneers to Guinea Pigs: The genesis of Causal Inference" href="03_genesis_of_causal_inference.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Causal Inference Notebook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Causal Inference Notebook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Causal Inference Notebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General info</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../placeholder_3.html">Placeholder</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../placeholder_4.html">Placeholder</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pearl/04a_bayes_theorem.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayes and causal inference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#induction-and-deduction">Induction and deduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-classification">Bayes theorem classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bayes-and-causal-inference">
+<h1>Bayes and causal inference<a class="headerlink" href="#bayes-and-causal-inference" title="Link to this heading">#</a></h1>
+<p>#Bayes #Causal-Inference</p>
+<p>See also [[04_Bayesianism]]</p>
+<p>Rev Thomas Bayes 1702-1761.</p>
+<p><img alt="" src="../_images/thomas_bayes.png" /></p>
+<p>Bayes genius was to calculate the probably of a cause (the hypothesis) from the occurrence of an effect (the evidence). In Bayes’ day this was known as <em>inverse probability</em>.</p>
+<section id="induction-and-deduction">
+<h2>Induction and deduction<a class="headerlink" href="#induction-and-deduction" title="Link to this heading">#</a></h2>
+<p><strong>Induction</strong>: Evidence to hypothesis; generalising from observation.  Example of an inductive argument: “All ravens I have seen are black. Therefore ravens are black.”</p>
+<p><strong>Deduction</strong>: Hypothesis to conclusion; applying what is known. Example of a deductive argument: “All noble gasses are stable. Neon is a noble gas. Therefore neon is stable.” Multiple hypotheses may be generated (by induction), and their conclusions checked against the facts; “When you have eliminated the impossible, whatever remains, however improbable, must be the truth” (Sherlock Holmes).</p>
+</section>
+<section id="bayes-theorem-classification">
+<h2>Bayes theorem classification<a class="headerlink" href="#bayes-theorem-classification" title="Link to this heading">#</a></h2>
+<p>From StatQuest…</p>
+<section id="bayes-theorem">
+<h3>Bayes theorem<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://youtu.be/9wCnvr7Xw4E">https://youtu.be/9wCnvr7Xw4E</a></p>
+<p><img alt="" src="../_images/conditional_probabilties.png" /></p>
+<p>We can use conditional probabilities to answer questions like “What is the probability of someone not loving candy if they love soda?”</p>
+<p><em>p(not love C &amp; love S | love S) = p(not love C &amp; love S) / p(love S) = 0.71</em></p>
+<p>Note: Stating <em>not love C &amp; love S</em> when we have conditioned upon <em>love S</em> can be seen as redundant, and can be shorted to <em>p(not love C | love S)</em>, but writing out in full can help get the calculation right!</p>
+<p>With Bayes theorem we do not need to know all probabilities:</p>
+<p><span class="math notranslate nohighlight">\(P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}\)</span></p>
+<p><img alt="" src="../_images/bayes_theorem.png" /></p>
+<p>The <em>marginalization</em> is the combined probability of B if the hypothesis (A) is true, or not true:</p>
+<ul class="simple">
+<li><p>P(B) = P(A)P(B|A) + P(¬A)(B|¬A)</p></li>
+</ul>
+<p><em>Likelihood / marginalisation</em> is also known as the <em>likelihood ratio</em> - that is how much more likely is B given that A is true.</p>
+<p>We need to know one conditional; probability, P(B|A), but we construct the calculation so we use the conditional probability we can more readily estimate (what would the world look like if the hypothesis were true) in order to calculate the conditional probably that is harder to measure. We also need to observe the frequency of our evidence, B, and we need to start with a prior estimate of our hypothesis, A.</p>
+<p>Bayes may also be applied to ‘strength of belief’ in  a hypothesis, where new evidence, which gives us P(B) (or at least an estimate of it) is used to update confidence in hypothesis, A.</p>
+</section>
+<section id="probability-and-likelihood">
+<h3>Probability and likelihood<a class="headerlink" href="#probability-and-likelihood" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://youtu.be/pYxNSUDSFH4">https://youtu.be/pYxNSUDSFH4</a></p>
+<ul class="simple">
+<li><p><em>Probability</em>: Given a fixed distribution, what is the probability of a given observation. Probabilities are areas under a fixed distribution: <span class="math notranslate nohighlight">\(pr(data|distribution)\)</span>.</p></li>
+<li><p><em>Likelihood</em>: Given a fixed observation, what is the likelihood of seeing that observation with the given distribution? <span class="math notranslate nohighlight">\(L(distribution|data)\)</span>.</p></li>
+</ul>
+<p><img alt="" src="../_images/likelihood_probability.png" /></p>
+</section>
+</section>
+<section id="a-worked-example">
+<h2>A worked example<a class="headerlink" href="#a-worked-example" title="Link to this heading">#</a></h2>
+<p>We are told a person is shy and likes to keep things tidy. Are they most likely a librarian?</p>
+<ul class="simple">
+<li><p>Let us assume there are 20X more farmers than librarians (our population is a librarian + 21 farmer)</p>
+<ul>
+<li><p>Our Prior, <em>P(H)</em>, of it being a librarian is therefore 1/21</p></li>
+</ul>
+</li>
+<li><p>But librarians are 4X more likely to be shy and tidy, compared to farmers</p></li>
+<li><p>Let us perform calculations based on  a population of 10 librarians and 200 farmers:</p>
+<ul>
+<li><p>Our Hypothesis is that we are looking at a librarian</p></li>
+<li><p>The probability of the evidence if our hypothesis is true, P(E|H) is 0.4</p>
+<ul>
+<li><p>Multiplied by the prior probability of the hypothesis being true, <em>P(H, 1/21)</em>  = 0.0190</p></li>
+</ul>
+</li>
+<li><p>The probability of the evidence if our hypothesis is false, P(E|¬H) is 0.1</p>
+<ul>
+<li><p>Multiplied by the prior probability of the hypothesis being false, <em>P(¬H, 20/21)</em> = 0.0952</p></li>
+</ul>
+</li>
+<li><p>The overall probability of seeing the evidence is therefore:</p>
+<ul>
+<li><p>(1/21 x 0.4) + (20/21 * 0.1) = 0.1143</p></li>
+</ul>
+</li>
+<li><p>The probability of the hypothesis being true, given the evidence:</p>
+<ul>
+<li><p>0.0190 / 0.1143 = 0.167</p></li>
+</ul>
+</li>
+<li><p>Given the evidence (a shy tidy person), but also given our prior knowledge of the ratio of librarians to farmers, there is only a 16.7% probability the person described is a librarian.</p></li>
+</ul>
+</li>
+<li><p>Another way of looking at this is to ask of all the cases where E is true (20 farmers + 4 librarians), what proportion are librarians = 4/24 = 0.167.</p></li>
+</ul>
+<p><img alt=" " src="../_images/bayes_worked_example.png" /></p>
+<p><video src="Modelling-Mindsets/images/Bayes_theorem.mp4" title=""><a href="Modelling-Mindsets/images/Bayes_theorem.mp4"></a></video></p>
+</section>
+<section id="another-worked-example">
+<h2>Another worked example<a class="headerlink" href="#another-worked-example" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A disease has a incidence rate in the general population of 0.1%.</p></li>
+<li><p>A test has been developed:</p>
+<ul>
+<li><p>100% sensitivity: P(positive|disease) = 1.0</p></li>
+<li><p>5% false positive: P(positive|no disease) = 0.05</p></li>
+</ul>
+</li>
+<li><p>Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?</p>
+<ul>
+<li><p>We want to compute P(disease|positive)</p></li>
+<li><p>Let’s imagine 1000 people</p></li>
+<li><p>1 person will have the disease, 999 do not</p></li>
+<li><p>The 1 disease person will test positive</p></li>
+<li><p>Of 999 non-positive ~50 will test positive</p></li>
+<li><p>So 1 real disease out of 51 non-disease positive</p></li>
+<li><p>= 1/51= 0.0196 = ~2%</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/bayes_worked_example_2.png" /></p>
+</section>
+<section id="naive-bayes-multinomial-naive-bayes">
+<h2>Naive Bayes (Multinomial Naive Bayes)<a class="headerlink" href="#naive-bayes-multinomial-naive-bayes" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://youtu.be/O2L2Uv9pdDA">https://youtu.be/O2L2Uv9pdDA</a></p>
+<p>Spam example:</p>
+<ul class="simple">
+<li><p>Start with <em>prior probability</em> of a message being normal or spam (e.g. use proportion of messages that are spam).</p></li>
+<li><p>Multiply by the probabilities of each word being in a normal or spam message.</p></li>
+<li><p>Resulting probabilities are proportional to the probability of being normal or spam; so take the highest probability.</p></li>
+</ul>
+<p><img alt="" src="pearl/naive_bayes.png" />
+But, in the above example ‘lunch’ is given 0 probability in spam as it has not been observed. This would mean that the resulting spam probability for a message with ‘lunch’ in it will always be zero, no matter the make-up of other words. To get around this people usually add a constant (<span class="math notranslate nohighlight">\(\alpha\)</span>) to all measured word frequencies in both normal and spam messages.</p>
+<p>Naive Bayes is <em>naive</em> because it ignores word orders (it uses ‘bag of words’).</p>
+</section>
+<section id="gaussian-naive-bayes-classifier">
+<h2>Gaussian Naive Bayes Classifier<a class="headerlink" href="#gaussian-naive-bayes-classifier" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://youtu.be/H3EjCKtlVog">https://youtu.be/H3EjCKtlVog</a></p>
+<p>Data is summarised in Gaussian distributions for each feature. Given a new case, we use the distributions to calculate likelihood for each feature value occurring for each class, and apply the naive Bayes method as above.</p>
+<p>Using natural log values (and adding these logs) for the calculation avoids <em>underflow</em> calculation errors, where values are too low for CPU to calculate properly.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pearl"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_genesis_of_causal_inference.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04b_bayesian_networks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bayesian networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#induction-and-deduction">Induction and deduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-classification">Bayes theorem classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The SAMueL Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
