@@ -9,9 +9,11 @@ parts:
   - file: glossary.md
 - caption: The Book of Why (Judea Pearl)
   chapters:
-  - file: placeholder_1.md
-    sections:
-    - file: placeholder_2.md
+  - file: pearl/01_introduction.md
+  - file: pearl/02_ladder_of_causation.md
+  - file: pearl/03_genesis_of_causal_inference.md
+  - file: pearl/04a_bayes_theorem.md
+  - file: pearl/04b_bayesian_networks.md
 - caption: Concepts
   chapters:
   - file: placeholder_3.md
