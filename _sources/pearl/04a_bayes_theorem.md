@@ -104,7 +104,7 @@ Spam example:
 * Multiply by the probabilities of each word being in a normal or spam message.
 * Resulting probabilities are proportional to the probability of being normal or spam; so take the highest probability.
 
-![](naive_bayes.png)
+![](images/naive_bayes.png)
 But, in the above example 'lunch' is given 0 probability in spam as it has not been observed. This would mean that the resulting spam probability for a message with 'lunch' in it will always be zero, no matter the make-up of other words. To get around this people usually add a constant ($\alpha$) to all measured word frequencies in both normal and spam messages.
 
 Naive Bayes is *naive* because it ignores word orders (it uses 'bag of words').
