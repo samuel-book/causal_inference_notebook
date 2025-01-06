@@ -10,6 +10,8 @@
 
 * **Confounder**: A confounder is a variable that affects both what you're testing (like a treatment) and what you're measuring (like an outcome), which can make it look like there's a relationship between them when there might not be one. Think of it like trying to figure out if yellow finger nails cause lung cancer - they are both caused by smoking, so appear related, but it is the smoking causing both (and so smoking needs to be measured and accounted for in order to avoid concluding that yellow finger nails cause lung cancer).
 
+* **Counterfactual**: The hypothetical outcome that would have occurred under a different treatment condition.
+
 * **Directed Acyclic Graph (DAG)**: A directed acyclic graph (DAG) is a visual tool that maps out cause-and-effect relationships between variables. It uses arrows to show how one variable influences another, with the arrows always pointing in one direction and never creating loops. Think of it as a roadmap showing how different factors affect each other - like how education might affect income, which in turn affects health - but you can never follow the arrows back to where you started (that's the *acyclic* bit). DAGs help researchers identify which variables they need to account for when studying cause-and-effect relationships, and help communicate the presumed causal relationships to others.
 
 * **E-value**: The E-value is a practical tool used in observational studies to assess how strong an unmeasured factor would need to be to invalidate a research finding. It helps researchers understand how robust their findings are against potential hidden factors they couldn't measure or control for. A large E-value indicates that very strong unmeasured confounding would be needed to explain away the results, suggesting the findings are more robust. Calculation is simple: For a given risk ratio (RR), the E-value is calculated using a simple formula that produces a number greater than or equal to 1. For example, if a study finds a risk ratio of 1.50, the corresponding E-value would be 2.37, meaning an unmeasured factor would need to have at least a 2.37-fold association with both the exposure and outcome to nullify the observed effect.
@@ -26,7 +28,17 @@
 
 * **Interference**: Interference in causal inference occurs when one subject's treatment or exposure can affect the outcomes of other subjects. This phenomenon commonly arises in settings where social interactions influence outcomes. An example of interference is vaccination, where vaccination of one person affects others' infection risks. Or prioritisation of one patients treatment may affect the amount of time another patient waits for treatment.
 
+* **Intention-to-treat**: Intention-to-treat (ITT) analysis is a fundamental method in randomized controlled trials where all participants are analyzed according to their originally assigned treatment groups, regardless of whether they actually received the intended treatment or not. The outcome may reflect real life treatment effects better than analysing only those known to have taken the treatment, but may under-estimate the inherent efficacy of the treatment. This compares with *per-protocol analysis* which only includes participants who strictly followed the study protocol and completed the treatment as intended. 
+
 * **Internal validity**: Internal validity is how confident we can be that a cause-and-effect relationship in a study is real and not due to other factors. Think of it as answering the question: "Did A actually cause B, or was something else responsible?". Internal validity is confined to making good conclusions in the study group. Compare with *external validity*.
+
+* **Instrumental variable analysis**: A technique for determining causality that depends on identifying a variable that effects exposure (treatment) but does not affect outcomes directly. Consider studying how a drug affects blood pressure. Instead of just comparing drug use and blood pressure directly, you might use "distance to the nearest pharmacy" as an instrumental variable. People living closer to pharmacies are more likely to take the drug, but their distance from a pharmacy doesn't directly affect their blood pressure in any other way.
+
+* **Mediator**: A variable that lies along the causal pathway between cause and effect, through which the causal effect may pass.
+
+* **Moderator**: A variable that affects the relationship between cause and effect variables.
+
+* **Per-Protocol Analysis**: Analysis of the effect of treatment when it is known the subject has taken the treatment as intended. This compares with *intention-to-treat* which analyses across the whole population where treatment was intended, whether the treatment was actually taken or not. This analysis may provide a better estimation of the inherent treatment efficacy, but over-estimate real world treatment effects.
 
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
 
