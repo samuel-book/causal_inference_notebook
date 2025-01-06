@@ -1,7 +1,5 @@
 # The ladder of causation
 
-#Causal-Inference 
-
 *"Probabilities, even conditional probabilities, alone encode our beliefs about a static observed world, causality tells us whether probabilities change when the world changes - be it by intervention or by act of imagination."*
 
 * Causal explanations make up the bulk of our knowledge.

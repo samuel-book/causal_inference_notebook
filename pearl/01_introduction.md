@@ -1,7 +1,5 @@
 # Introduction
 
-#Causal-Inference
-
 We naturally think in a causal way. If we understand the logic behind causal thinking, we could emulate it on modern computers, and create an "artificial scientist".
 
 *"Lucky is he who has been able to understand the causes of things"* Virgil, 29 BC.

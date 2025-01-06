@@ -97,6 +97,7 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 
 
 ## Naive Bayes (Multinomial Naive Bayes)
+
 https://youtu.be/O2L2Uv9pdDA
 
 Spam example: 
@@ -110,6 +111,7 @@ But, in the above example 'lunch' is given 0 probability in spam as it has not b
 Naive Bayes is *naive* because it ignores word orders (it uses 'bag of words').
 
 ## Gaussian Naive Bayes Classifier
+
 https://youtu.be/H3EjCKtlVog
 
 Data is summarised in Gaussian distributions for each feature. Given a new case, we use the distributions to calculate likelihood for each feature value occurring for each class, and apply the naive Bayes method as above.
