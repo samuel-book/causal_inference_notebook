@@ -43,9 +43,10 @@ The *marginalization* is the combined probability of B if the hypothesis (A) is 
 
 We need to know one conditional; probability, P(B|A), but we construct the calculation so we use the conditional probability we can more readily estimate (what would the world look like if the hypothesis were true) in order to calculate the conditional probably that is harder to measure. We also need to observe the frequency of our evidence, B, and we need to start with a prior estimate of our hypothesis, A.
 
-Bayes may also be applied to 'strength of belief' in  a hypothesis, where new evidence, which gives us P(B) (or at least an estimate of it) is used to update confidence in hypothesis, A.           
+Bayes may also be applied to 'strength of belief' in  a hypothesis, where new evidence, which gives us P(B) (or at least an estimate of it) is used to update confidence in hypothesis, A.
 
 ### Probability and likelihood
+
 https://youtu.be/pYxNSUDSFH4
 	
 * *Probability*: Given a fixed distribution, what is the probability of a given observation. Probabilities are areas under a fixed distribution: $pr(data|distribution)$.
@@ -76,8 +77,6 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 * Another way of looking at this is to ask of all the cases where E is true (20 farmers + 4 librarians), what proportion are librarians = 4/24 = 0.167.
 
 ![ ](./images/bayes_worked_example.png)
-
-![](../Modelling-Mindsets/images/Bayes_theorem.mp4)
 
 ## Another worked example
 
