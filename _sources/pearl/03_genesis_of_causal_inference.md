@@ -1,7 +1,5 @@
 # From Buccaneers to Guinea Pigs: The genesis of Causal Inference
 
-#Causal-Inference 
-
 ## Francis Galton and Karl Pearson
 
 Galton's '*quincunx*' or '*Galton board*' showed how individual random events produced a reproducible population on frequencies. A series of left/right random events lead to a normal distribution of frequencies. Galton used this as a model of inheritance - each generation inherits from the previous generation but can be a little to either side. But inherited distributions, such as height, do not get wider with successive generations. To fix this Galton had to add a layer which brought balls back closer to the centre - a law of 'regression to the mean' (or 'regression toward mediocrity').

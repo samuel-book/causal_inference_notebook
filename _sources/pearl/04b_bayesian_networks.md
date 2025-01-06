@@ -1,7 +1,5 @@
 # Bayesian networks
 
-#Bayes #Causal-Inference 
-
 Bayesian networks links multiple nodes. Bayes theorem describes the simplest 2-node network. The next step is a 3-node network, also called a junction. There are three basic types:
 
 * **A -> B -> C** : A chain where B  is a *mediator* between A and C. B also 'shields' C from A; A cannot directly determine C; C only *listens* to B. A and C are *conditionally independent*. This is important in programming as C only needs to be calculated based on B, and A can be ignored at this point. If we only look at instances where B has a particular value, we say we are *conditioning* upon B.
