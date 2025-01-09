@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>From Buccaneers to Guinea Pigs: The genesis of Causal Inference &#8212; Causal Inference Notebook</title>
+    <title>Deconfounding &#8212; Causal Inference Notebook</title>
   
   
   
@@ -57,13 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pearl/03_genesis_of_causal_inference';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_deconfounding/deconfounding';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bayes and causal inference" href="04a_bayes_theorem.html" />
-    <link rel="prev" title="The ladder of causation" href="02_ladder_of_causation.html" />
+    <link rel="prev" title="Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke" href="../1_dags/01_dag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,12 +180,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Book of Why (Judea Pearl)</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_ladder_of_causation.html">The ladder of causation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04a_bayes_theorem.html">Bayes and causal inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04b_bayesian_networks.html">Bayesian networks</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pearl/01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/02_ladder_of_causation.html">The ladder of causation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/03_genesis_of_causal_inference.html">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04a_bayes_theorem.html">Bayes and causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04b_bayesian_networks.html">Bayesian networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Directed Acyclic Graphs (DAGs)</span></p>
 <ul class="nav bd-sidenav">
@@ -247,7 +244,7 @@
       
       
       
-      <li><a href="../_sources/pearl/03_genesis_of_causal_inference.md" target="_blank"
+      <li><a href="../_sources/2_deconfounding/deconfounding.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -331,7 +328,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>From Buccaneers to Guinea Pigs: The genesis of Causal Inference</h1>
+    <h1>Deconfounding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,9 +338,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#francis-galton-and-karl-pearson">Francis Galton and Karl Pearson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sewall-wright">Sewall Wright</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-by-wright">A worked example by Wright</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-methods">Statistical Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-techniques">Advanced Techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-approaches">Modern Approaches</a></li>
 </ul>
             </nav>
         </div>
@@ -355,40 +352,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="from-buccaneers-to-guinea-pigs-the-genesis-of-causal-inference">
-<h1>From Buccaneers to Guinea Pigs: The genesis of Causal Inference<a class="headerlink" href="#from-buccaneers-to-guinea-pigs-the-genesis-of-causal-inference" title="Link to this heading">#</a></h1>
-<section id="francis-galton-and-karl-pearson">
-<h2>Francis Galton and Karl Pearson<a class="headerlink" href="#francis-galton-and-karl-pearson" title="Link to this heading">#</a></h2>
-<p>Galton’s ‘<em>quincunx</em>’ or ‘<em>Galton board</em>’ showed how individual random events produced a reproducible population on frequencies. A series of left/right random events lead to a normal distribution of frequencies. Galton used this as a model of inheritance - each generation inherits from the previous generation but can be a little to either side. But inherited distributions, such as height, do not get wider with successive generations. To fix this Galton had to add a layer which brought balls back closer to the centre - a law of ‘regression to the mean’ (or ‘regression toward mediocrity’).</p>
-<p><img alt="" src="../_images/quincunx.png" /></p>
-<p>Galton found that fathers and sons heights were co-related, or correlated. But the relationship and the tendency towards the mean was bidirectional - a tall son is likely to have a taller than average father, but not as tall as the son, and vice versa. This co-relation could not therefore be interpreted as directly causal (as the son can not cause attributes of the father).</p>
-<p>In Galton’s model the next generation inherits the ‘chance’ that applied to the previous generation. But this is wrong - ‘chance’ is additive to inheritance, but it is not passed on to the next generation (though perhaps a vestige of chance is, with things like success?).</p>
-<p>Karl Person saw causation as just a special case of correlation (that he had developed); causation set the natural limit to correlation. Pearson believe causation could not be proved scientifically - that what people saw as causation was just a repetition of sequence, but there was no proof that the sequence must always repeat in the future.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="deconfounding">
+<h1>Deconfounding<a class="headerlink" href="#deconfounding" title="Link to this heading">#</a></h1>
+<p>Here are the main deconfounding techniques used in research and analysis:</p>
+<section id="statistical-methods">
+<h2>Statistical Methods<a class="headerlink" href="#statistical-methods" title="Link to this heading">#</a></h2>
+<p><strong>Randomization</strong>: Randomly assign subjects to treatment groups to ensure equal distribution of known and unknown confounding variables[2][5].</p>
+<p><strong>Restriction</strong>: Limit study participants to those with similar values of potential confounding variables, eliminating variation in confounders[2][5].</p>
+<p><strong>Matching</strong>: Pair subjects in treatment groups with counterparts in comparison groups who share the same confounding variable values[2][5].</p>
+<p><strong>Statistical Control</strong>: Include potential confounders as variables in regression analysis[2].</p>
 </section>
-<section id="sewall-wright">
-<h2>Sewall Wright<a class="headerlink" href="#sewall-wright" title="Link to this heading">#</a></h2>
-<p>Sewall Wright was investigating genetics - looking at colour patterns in guinea-pigs.</p>
-<p><img alt="" src="../_images/sewall_wright.png" /></p>
-<p>Inheritance of colour patches did not appear to follow Mendelian rules - it was not possible to fix colour patterns by in-breeding. Wright proposed that ‘developmental factors’ in the womb were causing some of the variations.</p>
-<p>Wright framed this as a mathematical problem with <span class="math notranslate nohighlight">\(d\)</span> (developmental) and <span class="math notranslate nohighlight">\(h\)</span> (hereditary) values to be determined. To work out the algebra needed he drew things out as a <em>path diagram</em>:</p>
-<p><img alt="" src="../_images/path_diagram.png" /></p>
-<p>Wright showed that in a randomly bred population of guinea pigs, 42% of the variation was due to developmental factors, and 42% due to hereditary. In a highly inbred family only 3% of variation was due to hereditary, and 92% was due to developmental factors. <em>Chance</em> in the above diagram relates to which genes are passed from mother/father (this was not a mechanism understood at the time).</p>
-<p>The path diagram is powerful as the the coefficients along a path may be multiplied to get the strength of each path. Omitted arrows communicate that there is no causal link.</p>
-<p>When relationships are not known, Wright argued that the causal path diagram can be used to test hypothesised causal paths - if the hypothesised path does not predict the actual data then that path may be dismissed. <strong>Causal path diagrams always require some causal hypothesis.</strong></p>
+<section id="advanced-techniques">
+<h2>Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Link to this heading">#</a></h2>
+<p><strong>Stratification</strong>: Distribute confounders evenly within separate strata or groups for analysis[8].</p>
+<p><strong>Multivariate Modeling</strong>: Use statistical models to handle multiple covariates and confounders simultaneously[9].</p>
+<p><strong>Standardization</strong>: Use a standard reference population to negate the effects of confounding factors like age and sex[10].</p>
 </section>
-<section id="a-worked-example-by-wright">
-<h2>A worked example by Wright<a class="headerlink" href="#a-worked-example-by-wright" title="Link to this heading">#</a></h2>
-<p>How much does a guinea-pig pup grow in the womb just before birth?</p>
-<p>A simple look at the data suggests that guinea-pigs born with an extra day of gestation are 5.66g heavier. But guinea-pigs born later tend to come from smaller litter sizes which also affects growth. How do we disentangle these things?</p>
-<p><img alt="" src="../_images/growth.png" /></p>
-<p><strong>The causal effect is the product of coefficients along a given causal path.</strong></p>
-<ul class="simple">
-<li><p>The direct path is represented by path P -&gt; X, or the coefficient <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
-<li><p>The bias due to litter size, L, is the paths P &lt;- L -&gt; Q -&gt; X. The bias is the product of the path coefficients along those paths, or <span class="math notranslate nohighlight">\(l.l'.q\)</span>.</p></li>
-<li><p>The total correlation is the sum of the direct path and the litter size path, or <span class="math notranslate nohighlight">\(p + (l.l'.q) = 5.66\)</span></p></li>
-<li><p>We can measure the correlations of the pairs (P, X), (L, X), (L,P), and algebraically we can then calculate <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(l'\)</span>, and <span class="math notranslate nohighlight">\(l.q\)</span>.</p></li>
-<li><p>Wright solved this to show that <span class="math notranslate nohighlight">\(p\)</span> was 3.34g per day, teasing apart growth rate due to gestation from the effect on litter size.</p></li>
-</ul>
+<section id="modern-approaches">
+<h2>Modern Approaches<a class="headerlink" href="#modern-approaches" title="Link to this heading">#</a></h2>
+<p><strong>Latent Variable Inference</strong>: Use recurrent neural networks (RNNs) to infer unobserved confounders from historical data[16].</p>
+<p><strong>Variational Autoencoder Deconfounding</strong>: Remove latent features correlated with confounders using specialized neural network architectures[7].</p>
+<p><strong>Propensity Score Methods</strong>: Estimate the probability of receiving treatment based on subject characteristics using logistic regression models[15].</p>
+<p>Citations:
+[1] <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2024.09.20.24314055v1">https://www.medrxiv.org/content/10.1101/2024.09.20.24314055v1</a>
+[2] <a class="reference external" href="https://www.scribbr.co.uk/faqs/how-do-i-prevent-confounding-variables-from-interfering-with-my-research/">https://www.scribbr.co.uk/faqs/how-do-i-prevent-confounding-variables-from-interfering-with-my-research/</a>
+[3] <a class="reference external" href="https://academic.oup.com/bib/article-abstract/25/6/bbae512/7824239">https://academic.oup.com/bib/article-abstract/25/6/bbae512/7824239</a>
+[4] <a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2023.2240461">https://www.tandfonline.com/doi/full/10.1080/01621459.2023.2240461</a>
+[5] <a class="reference external" href="https://www.scribbr.co.uk/research-methods/confounding-variable/">https://www.scribbr.co.uk/research-methods/confounding-variable/</a>
+[6] <a class="reference external" href="https://openreview.net/forum?id=ryxDjjCqtQ">https://openreview.net/forum?id=ryxDjjCqtQ</a>
+[7] <a class="reference external" href="https://academic.oup.com/bib/article/25/6/bbae512/7824239">https://academic.oup.com/bib/article/25/6/bbae512/7824239</a>
+[8] <a class="reference external" href="https://www.statsdirect.com/help/basics/confounding.htm">https://www.statsdirect.com/help/basics/confounding.htm</a>
+[9] <a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4017459/">https://pmc.ncbi.nlm.nih.gov/articles/PMC4017459/</a>
+[10] <a class="reference external" href="https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/biases">https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/biases</a>
+[11] <a class="reference external" href="https://www.turing.ac.uk/sites/default/files/2020-07/time_series_deconfounder.pdf">https://www.turing.ac.uk/sites/default/files/2020-07/time_series_deconfounder.pdf</a>
+[12] <a class="reference external" href="https://www.nngroup.com/articles/confounding-variables-quantitative-ux/">https://www.nngroup.com/articles/confounding-variables-quantitative-ux/</a>
+[13] <a class="reference external" href="https://www.turing.ac.uk/news/publications/time-series-deconfounder-estimating-treatment-effects-over-time-presence-hidden">https://www.turing.ac.uk/news/publications/time-series-deconfounder-estimating-treatment-effects-over-time-presence-hidden</a>
+[14] <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24834204/">https://pubmed.ncbi.nlm.nih.gov/24834204/</a>
+[15] <a class="reference external" href="https://handbook-5-1.cochrane.org/chapter_13/13_6_2_1_controlling_for_confounding.htm">https://handbook-5-1.cochrane.org/chapter_13/13_6_2_1_controlling_for_confounding.htm</a>
+[16] <a class="reference external" href="https://arxiv.org/html/2410.20423v1">https://arxiv.org/html/2410.20423v1</a>
+[17] <a class="reference external" href="https://proceedings.mlr.press/v236/hatt24a.html">https://proceedings.mlr.press/v236/hatt24a.html</a></p>
 </section>
 </section>
 
@@ -405,7 +407,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./pearl"
+            path: "./2_deconfounding"
         },
         predefinedOutput: true
     }
@@ -423,22 +425,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02_ladder_of_causation.html"
+       href="../1_dags/01_dag.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The ladder of causation</p>
+        <p class="prev-next-title">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="04a_bayes_theorem.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bayes and causal inference</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -456,9 +449,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#francis-galton-and-karl-pearson">Francis Galton and Karl Pearson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sewall-wright">Sewall Wright</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-by-wright">A worked example by Wright</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-methods">Statistical Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-techniques">Advanced Techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-approaches">Modern Approaches</a></li>
 </ul>
   </nav></div>
 
