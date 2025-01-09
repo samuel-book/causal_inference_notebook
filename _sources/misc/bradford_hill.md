@@ -39,7 +39,7 @@ These criteria are not meant to be rigid rules but rather "viewpoints" to guide 
 
 The criteria must be applied with scientific common sense rather than as a strict checklist[3]. They have evolved with modern science, particularly as our understanding of genetics, molecular biology, and disease mechanisms has advanced[4]. While some debate their current relevance, they remain a fundamental framework for evaluating causal relationships in epidemiology[3].
 
-Citations:
+## Citations
 
 [1] https://www.healthknowledge.org.uk/e-learning/epidemiology/practitioners/causation-epidemiology-association-causation
 
