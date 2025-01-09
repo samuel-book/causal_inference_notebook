@@ -4,7 +4,11 @@
 
 * **Backtracking counterfactuals**: an approach to causal reasoning where changes are traced backward through a causal chain while preserving the original causal laws. Unlike traditional interventional counterfactuals, backtracking allows both downstream and upstream variables to change in response to a counterfactual scenario. This allows linkage between causative factors.
 
+* **Bayes theorum**: Bayes' theorem is a mathematical formula that calculates the probability of an event based on a prior estimate of the probability of that event, and then the addition of new information. It allows us to update our probability estimates when we receive new evidence or information.
+
 * **Bias**: Bias in causal inference refers to systematic deviations between observed relationships and true causal effects. There are three main types of bias that affect causal studies: 1) *Confounding bias* (or *omitted variable bias*) occurs when a variable, that is either not measured or not controlled for properly, affects both the treatment and outcome but is not included in the analysis, 2) *Selection bias* occurs when there is selection of people into a trial, or selection of people out of results collection for a trial, 3) *Measurement bias* stems from incorrect measurement of outcomes, exposures, or confounding variables.
+
+* **Bradford Hill criteria**: Nine principles used to evaluate whether an observed association between a presumed cause and an effect is likely to be causal.
 
 * **Causal inference**: Causal inference is the process of figuring out whether one thing truly causes another thing to happen. It goes beyond simply noticing that two things are related (correlation) and tries to determine if changing one thing directly leads to changes in another.
 
