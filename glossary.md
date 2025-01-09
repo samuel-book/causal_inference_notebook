@@ -1,5 +1,7 @@
 # Glossary
 
+* **Average treatment effect**: the difference in mean outcomes between treated and untreated patients across a population (often a population of patients who are considered eligible for treatment). In outcome models the *counterfactual* outcomes for each patient for when they do or or do not receive treatment may be predicted (and averaged across the population). In clinical trails it is the average difference between treated and untreated outcomes (see also *intention-to-treat* and *per-protocol analysis*).
+
 * **Bias**: Bias in causal inference refers to systematic deviations between observed relationships and true causal effects. There are three main types of bias that affect causal studies: 1) *Confounding bias* (or *omitted variable bias*) occurs when a variable, that is either not measured or not controlled for properly, affects both the treatment and outcome but is not included in the analysis, 2) *Selection bias* occurs when there is selection of people into a trial, or selection of people out of results collection for a trial, 3) *Measurement bias* stems from incorrect measurement of outcomes, exposures, or confounding variables.
 
 * **Causal inference**: Causal inference is the process of figuring out whether one thing truly causes another thing to happen. It goes beyond simply noticing that two things are related (correlation) and tries to determine if changing one thing directly leads to changes in another.
