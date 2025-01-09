@@ -17,3 +17,6 @@ parts:
 - caption: Directed Acyclic Graphs (DAGs)
   chapters:
   - file: 1_dags/01_dag.ipynb
+- caption: Deconfounding
+  chapters:
+  - file: 2_deconfounding/deconfounding.md
