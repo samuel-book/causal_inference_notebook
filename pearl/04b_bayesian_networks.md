@@ -16,29 +16,20 @@ Using our example of a diagnostic test for breast cancer, applied to a 40 year o
 * Sensitivity = 0.75
 * Specificity = 0.88 (FP = 0.12)
 
-```mermaid
-flowchart LR
-
-A[Disease] --> C[Test]
-
-```
+![](images/bayes_flow_1.png)
 
 Conditional probability table for the link between Disease and Test.
 
 |       | T = 0 | T = 1 |
 | ----- | ----- | ----- |
 | D = 0 | 0.88  | 0.12  |
-| D = 1 | 0.27  | 0.73      |
+| D = 1 | 0.27  | 0.73  |
 
 ### Lost bag example
+
 Let's imagine we are waiting for a bag after a flight. The probability of the bag being on the carousel depends on (1) whether the bag was on the plane, and (2) how long it has been since the plane landed:
 
-```mermaid
-flowchart TB
-
-A[Bag on plane] --> C[Bag on carousel]
-B[Elapsed time] --> C
-```
+![](images/bayes_flow_2.png)
 
 We can measure the time it takes bags to reach the carousel, and and set up a contingency table:
 
