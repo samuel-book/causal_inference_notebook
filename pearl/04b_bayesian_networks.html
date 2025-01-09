@@ -374,12 +374,7 @@ document.write(`
 <li><p>Sensitivity = 0.75</p></li>
 <li><p>Specificity = 0.88 (FP = 0.12)</p></li>
 </ul>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart LR
-
-A[Disease] --&gt; C[Test]
-
-</pre></div>
-</div>
+<p><img alt="" src="../_images/bayes_flow_1.png" /></p>
 <p>Conditional probability table for the link between Disease and Test.</p>
 <table class="table">
 <thead>
@@ -402,12 +397,7 @@ A[Disease] --&gt; C[Test]
 <section id="lost-bag-example">
 <h3>Lost bag example<a class="headerlink" href="#lost-bag-example" title="Link to this heading">#</a></h3>
 <p>Let’s imagine we are waiting for a bag after a flight. The probability of the bag being on the carousel depends on (1) whether the bag was on the plane, and (2) how long it has been since the plane landed:</p>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart TB
-
-A[Bag on plane] --&gt; C[Bag on carousel]
-B[Elapsed time] --&gt; C
-</pre></div>
-</div>
+<p><img alt="" src="../_images/bayes_flow_2.png" /></p>
 <p>We can measure the time it takes bags to reach the carousel, and and set up a contingency table:</p>
 <table class="table">
 <thead>
