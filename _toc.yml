@@ -20,6 +20,6 @@ parts:
 - caption: Deconfounding
   chapters:
   - file: 2_deconfounding/deconfounding.md
-  caption: Miscellaneous
+- caption: Miscellaneous
   chapters:
   - file: misc/bradford_hill.md
