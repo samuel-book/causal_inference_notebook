@@ -40,11 +40,20 @@ These criteria are not meant to be rigid rules but rather "viewpoints" to guide 
 The criteria must be applied with scientific common sense rather than as a strict checklist[3]. They have evolved with modern science, particularly as our understanding of genetics, molecular biology, and disease mechanisms has advanced[4]. While some debate their current relevance, they remain a fundamental framework for evaluating causal relationships in epidemiology[3].
 
 Citations:
+
 [1] https://www.healthknowledge.org.uk/e-learning/epidemiology/practitioners/causation-epidemiology-association-causation
+
 [2] https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2022.938163/full
+
 [3] https://en.wikipedia.org/wiki/Bradford_Hill_criteria
+
 [4] https://pmc.ncbi.nlm.nih.gov/articles/PMC4589117/
+
 [5] https://jech.bmj.com/content/65/5/392
+
 [6] https://www.rtihs.org/sites/default/files/26902%20Rothman%201998%20The%20encyclopedia%20of%20biostatistics.pdf
+
 [7] https://pmc.ncbi.nlm.nih.gov/articles/PMC8206235/
+
 [8] https://www.google.com/policies/faq
+
