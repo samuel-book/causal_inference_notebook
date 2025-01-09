@@ -14,8 +14,6 @@ parts:
   - file: pearl/03_genesis_of_causal_inference.md
   - file: pearl/04a_bayes_theorem.md
   - file: pearl/04b_bayesian_networks.md
-- caption: Concepts
+- caption: Directed Acyclic Graphs (DAGs)
   chapters:
-  - file: placeholder_3.md
-    sections:
-    - file: placeholder_4.md
+  - file: 1_dags/01_dag.ipynb

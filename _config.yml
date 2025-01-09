@@ -21,3 +21,8 @@ latex:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/samuel-book/causal_inference_notebook  # Online location of your book
+
+# pip install sphinxcontrib-mermaid
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid
