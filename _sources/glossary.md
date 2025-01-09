@@ -34,11 +34,15 @@
 
 * **Instrumental variable analysis**: A technique for determining causality that depends on identifying a variable that effects exposure (treatment) but does not affect outcomes directly. Consider studying how a drug affects blood pressure. Instead of just comparing drug use and blood pressure directly, you might use "distance to the nearest pharmacy" as an instrumental variable. People living closer to pharmacies are more likely to take the drug, but their distance from a pharmacy doesn't directly affect their blood pressure in any other way.
 
+* **Inverse propensity weighting**: The outcomes of patients are weighted by their propensity to treat, or more accurately by the inverse propensity to treat. For treated individuals the weight is 1 / p; for untreated individuals the weight is 1 / (1 - p). This effectively gives more weight to patients not treated in the usual way (e.g. gives more weight to looking at the outcome of patients who would normally be expected to be treated but did not receive treatment, and vice versa).
+
 * **Mediator**: A variable that lies along the causal pathway between cause and effect, through which the causal effect may pass.
 
 * **Moderator**: A variable that affects the relationship between cause and effect variables.
 
 * **Per-Protocol Analysis**: Analysis of the effect of treatment when it is known the subject has taken the treatment as intended. This compares with *intention-to-treat* which analyses across the whole population where treatment was intended, whether the treatment was actually taken or not. This analysis may provide a better estimation of the inherent treatment efficacy, but over-estimate real world treatment effects.
+
+* **Propensity score**: the probability that an individual receives a treatment or intervention, given a set of observed data about the patient/setting. This allows better comparison of treatment effects when the people more likely to receive treatment are more likely to have a good/bad outcome compared with those that do not receive treatment. It helps to simplify analysis by combining multiple features about patients/setting into a single variable. The propensity score may be used for 1) *matching*, where pairs of treated and untreated people are identified each with similar propensity scores, *weighting*, where a model includes the propensity score in order to adjust outcome by likelihood to treat, and *subclassification*, where analysis can group people with similar propensity scores. See also *inverse propensity weighting*.
 
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
 
