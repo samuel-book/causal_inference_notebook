@@ -14,7 +14,7 @@
 
 * **Counterfactual**: The hypothetical outcome that would have occurred under a different treatment condition.
 
-* **Deconfounding**: The process of overcoming confounding in models, such as including confounding variables in the model or using *instrumental variable analysis* (see below).
+* **Deconfounding**: The process of overcoming confounding in models, such as including confounding variables in the model, propensity score matching or weighting, or using *instrumental variable analysis* (see below).
 
 * **Directed Acyclic Graph (DAG)**: A directed acyclic graph (DAG) is a visual tool that maps out cause-and-effect relationships between variables. It uses arrows to show how one variable influences another, with the arrows always pointing in one direction and never creating loops. Think of it as a roadmap showing how different factors affect each other - like how education might affect income, which in turn affects health - but you can never follow the arrows back to where you started (that's the *acyclic* bit). DAGs help researchers identify which variables they need to account for when studying cause-and-effect relationships, and help communicate the presumed causal relationships to others.
 
@@ -39,6 +39,8 @@
 * **Instrumental variable analysis**: A technique for determining causality that depends on identifying a variable that effects exposure (treatment), in a way that is independent of eligibility of treatment, but does not affect outcomes directly. Consider studying how a drug affects blood pressure. Instead of just comparing drug use and blood pressure directly, you might use "distance to the nearest pharmacy" as an instrumental variable. People living closer to pharmacies are more likely to take the drug, but their distance from a pharmacy doesn't directly affect their blood pressure in any other way.
 
 * **Inverse propensity weighting**: The outcomes of patients are weighted by their propensity to treat, or more accurately by the inverse propensity to treat. For treated individuals the weight is 1 / p; for untreated individuals the weight is 1 / (1 - p). This effectively gives more weight to patients not treated in the usual way (e.g. gives more weight to looking at the outcome of patients who would normally be expected to be treated but did not receive treatment, and vice versa).
+
+* **Latent variable**: An unobserved construct that can only be inferred indirectly through models using observable or measurable data. Examples are IQ, or depression scores derived from questionnaires.
 
 * **Mediator**: A variable that lies along the causal pathway between cause and effect, through which the causal effect may pass.
 
