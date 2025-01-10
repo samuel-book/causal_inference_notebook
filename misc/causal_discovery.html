@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Key causal discovery methods &#8212; Causal Inference Notebook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'misc/causal_discovery';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Bradford Hill criteria" href="bradford_hill.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Causal Inference Notebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General info</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Book of Why (Judea Pearl)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pearl/01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/02_ladder_of_causation.html">The ladder of causation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/03_genesis_of_causal_inference.html">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04a_bayes_theorem.html">Bayes and causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04b_bayesian_networks.html">Bayesian networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Directed Acyclic Graphs (DAGs)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_dags/01_dag.html">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deconfounding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_deconfounding/deconfounding.html">Deconfounding</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bradford_hill.html">Bradford Hill criteria</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Key causal discovery methods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/misc/causal_discovery.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Key causal discovery methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">Challenges</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="key-causal-discovery-methods">
+<h1>Key causal discovery methods<a class="headerlink" href="#key-causal-discovery-methods" title="Permalink to this heading">#</a></h1>
+<p>Causal discovery is the process of inferring cause-and-effect relationships between variables from observational data, without relying on controlled experiments or interventions [1] [3]. Unlike traditional correlation analysis that only identifies statistical associations, causal discovery aims to uncover the actual causal structure and relationships in a system [9].</p>
+<section id="key-components">
+<h2>Key Components<a class="headerlink" href="#key-components" title="Permalink to this heading">#</a></h2>
+<p><strong>Core Approaches</strong></p>
+<ul class="simple">
+<li><p>Constraint-based methods use conditional independence testing to identify causal relationships by examining how variables become independent when conditioning on other variables [8]</p></li>
+<li><p>Score-based methods evaluate potential causal graphs using scoring functions and select the highest-scoring structure [8]</p></li>
+<li><p>Functional causal model-based methods use specific assumptions about the functional relationships between variables to determine causation [6]</p></li>
+</ul>
+<p><strong>Key Assumptions</strong></p>
+<ul class="simple">
+<li><p>Causal Markov condition: Variables are independent of non-descendants given their direct causes [1]</p></li>
+<li><p>Causal faithfulness: The observed independencies in the data reflect the underlying causal structure [1]</p></li>
+<li><p>Causal sufficiency: All common causes are included in the observed variables [1]</p></li>
+</ul>
+</section>
+<section id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
+<p>Causal discovery has important applications across multiple domains:</p>
+<p><strong>Healthcare</strong></p>
+<ul class="simple">
+<li><p>Drug discovery and development</p></li>
+<li><p>Treatment optimization</p></li>
+<li><p>Disease progression analysis [5]</p></li>
+</ul>
+<p><strong>Finance</strong></p>
+<ul class="simple">
+<li><p>Risk assessment</p></li>
+<li><p>Fraud detection</p></li>
+<li><p>Investment strategy optimization [5]</p></li>
+</ul>
+<p><strong>Climate Science</strong></p>
+<ul class="simple">
+<li><p>Understanding climate change drivers</p></li>
+<li><p>Attribution of extreme weather events [5]</p></li>
+</ul>
+</section>
+<section id="challenges">
+<h2>Challenges<a class="headerlink" href="#challenges" title="Permalink to this heading">#</a></h2>
+<p>Several key challenges exist in practical causal discovery:</p>
+<ul class="simple">
+<li><p>Non-linear relationships between variables [9]</p></li>
+<li><p>Presence of unmeasured confounding variables</p></li>
+<li><p>Measurement errors and missing data [16]</p></li>
+<li><p>High dimensionality of real-world datasets [17]</p></li>
+<li><p>Need for domain expertise to validate discovered relationships [10]</p></li>
+</ul>
+<p>The field continues to evolve with new methods and approaches being developed to address these challenges and make causal discovery more applicable to real-world problems [14].</p>
+<p>Citations:
+[1] <a class="reference external" href="https://docs.actable.ai/causal_discovery.html">https://docs.actable.ai/causal_discovery.html</a></p>
+<p>[2] <a class="reference external" href="https://arxiv.org/abs/2407.08602">https://arxiv.org/abs/2407.08602</a></p>
+<p>[3] <a class="reference external" href="https://en.wikipedia.org/wiki/Exploratory_causal_analysis">https://en.wikipedia.org/wiki/Exploratory_causal_analysis</a></p>
+<p>[4] <a class="reference external" href="https://causalai.causalens.com/resources/white-papers/how-can-ai-discover-cause-and-effect/">https://causalai.causalens.com/resources/white-papers/how-can-ai-discover-cause-and-effect/</a></p>
+<p>[5] <a class="reference external" href="https://www.leewayhertz.com/causal-ai/">https://www.leewayhertz.com/causal-ai/</a></p>
+<p>[6] <a class="reference external" href="https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2019.00524/full">https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2019.00524/full</a></p>
+<p>[7] <a class="reference external" href="https://towardsdatascience.com/causal-discovery-6858f9af6dcb?gi=bcd6588433fa">https://towardsdatascience.com/causal-discovery-6858f9af6dcb?gi=bcd6588433fa</a></p>
+<p>[8] <a class="reference external" href="https://www.nature.com/articles/s41598-020-59669-x">https://www.nature.com/articles/s41598-020-59669-x</a></p>
+<p>[9] <a class="reference external" href="https://datarefiner.com/feed/causality">https://datarefiner.com/feed/causality</a></p>
+<p>[10] <a class="reference external" href="https://www.pywhy.org/dowhy/v0.10/example_notebooks/dowhy_causal_discovery_example.html">https://www.pywhy.org/dowhy/v0.10/example_notebooks/dowhy_causal_discovery_example.html</a></p>
+<p>[11] <a class="reference external" href="https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1449">https://wires.onlinelibrary.wiley.com/doi/10.1002/widm.1449</a></p>
+<p>[12] <a class="reference external" href="https://www.youtube.com/watch?v=6A62uq1Ooi4">https://www.youtube.com/watch?v=6A62uq1Ooi4</a></p>
+<p>[13] <a class="reference external" href="https://arxiv.org/pdf/2305.10032.pdf">https://arxiv.org/pdf/2305.10032.pdf</a></p>
+<p>[14] <a class="reference external" href="https://arxiv.org/abs/2412.01953">https://arxiv.org/abs/2412.01953</a></p>
+<p>[15] <a class="reference external" href="https://www.youtube.com/watch?v=tufdEUSjmNI">https://www.youtube.com/watch?v=tufdEUSjmNI</a></p>
+<p>[16] <a class="reference external" href="http://kth.diva-portal.org/smash/get/diva2:1720056/FULLTEXT01.pdf">http://kth.diva-portal.org/smash/get/diva2:1720056/FULLTEXT01.pdf</a></p>
+<p>[17] <a class="reference external" href="https://causalens.com/resources/blog/discovering-causal-drivers-at-scale/">https://causalens.com/resources/blog/discovering-causal-drivers-at-scale/</a></p>
+<p>[18] <a class="reference external" href="https://towardsdatascience.com/causal-discovery-6858f9af6dcb?gi=bcd6588433fa">https://towardsdatascience.com/causal-discovery-6858f9af6dcb?gi=bcd6588433fa</a></p>
+<p>[19] <a class="reference external" href="https://www.stat.cmu.edu/~cshalizi/uADA/12/lectures/ch25.pdf">https://www.stat.cmu.edu/~cshalizi/uADA/12/lectures/ch25.pdf</a></p>
+<p>[20] <a class="reference external" href="https://www.pywhy.org/dowhy/v0.11/example_notebooks/dowhy_causal_discovery_example.html">https://www.pywhy.org/dowhy/v0.11/example_notebooks/dowhy_causal_discovery_example.html</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./misc"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bradford_hill.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bradford Hill criteria</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">Challenges</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The SAMueL Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
