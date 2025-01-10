@@ -1,5 +1,7 @@
 # Glossary
 
+* **Antecedent**: An antecedent in causal models refers to a preceding event, condition, or characteristic that influences or determines a subsequent outcome.
+
 * **Average treatment effect**: the difference in mean outcomes between treated and untreated patients across a population (often a population of patients who are considered eligible for treatment). In outcome models the *counterfactual* outcomes for each patient for when they do or or do not receive treatment may be predicted (and averaged across the population). In clinical trails it is the average difference between treated and untreated outcomes (see also *intention-to-treat* and *per-protocol analysis*).
 
 * **Backtracking counterfactuals**: an approach to causal reasoning where changes are traced backward through a causal chain while preserving the original causal laws. Unlike traditional interventional counterfactuals, backtracking allows both downstream and upstream variables to change in response to a counterfactual scenario. This allows linkage between causative factors.
@@ -13,11 +15,15 @@
 * **Causal discovery**: Causal discovery is the process of inferring cause-and-effect relationships between variables from observational data, without relying on controlled experiments or interventions. Core approaches are: 1) Constraint-based methods use conditional independence testing to identify causal relationships by examining how variables become independent when conditioning on other variables, 2) 
 Score-based methods evaluate potential causal graphs using scoring functions and select the highest-scoring structure, 3) Functional causal model-based methods use specific assumptions about the functional relationships between variables to determine causation. Causal discovery differs from causal inference in that causal discovery focuses on what identifying what factors are causal, and causal inference focuses on determining what effect changing those factors would have.
 
+* **Causal Function**: A function that maps from parent node values to possible values of a node, where changes in arguments represent controlled changes.
+
 * **Causal inference**: Causal inference is the process of figuring out whether one thing truly causes another thing to happen. It goes beyond simply noticing that two things are related (correlation) and tries to determine if changing one thing directly leads to changes in another. Causal inference differs from causal discovery in that causal discovery focuses on what identifying what factors are causal, and causal inference focuses on determining what effect changing those factors would have.
 
 * **Collider**: A collider is a variable that gets affected by two or more other variables - imagine it like a point where multiple influences "collide" into each other. Unlike confounders, which need to be controlled for in studies, controlling for a collider can actually create false relationships between variables and mess up your analysis. As an example, consider a sack filled with potatoes and carrots. The total weight of any sack of any size (the collider) is independently affected by both the number of potatoes and the number of carrots. If you look at sacks of the same weight, you'll find that more potatoes means fewer carrots, and vice versa - creating an artificial relationship between two otherwise unrelated variables. The key insight is that these relationships only appear when we focus on (or "condition on") the collider.
 
 * **Conditional average treatment effect (CATE)**: The Conditional Average Treatment Effect (CATE) is the average impact of a treatment or intervention on a specific subgroup of people who share similar characteristics (such as age, race, or sex). Unlike looking at how a treatment affects everyone as a whole, CATE focuses on how it affects particular groups differently.
+
+* **Conditional Independence**: When two sets of variables (A and B) are independent given a third set (C), expressed as (A⊥⊥B∣C). For example sea drownings (A) and ice cream sales (B) may correlate, but the correlation disappears when weather (C) is controlled for.
 
 * **Confounder**: A confounder is a variable that affects both what you're testing (like a treatment) and what you're measuring (like an outcome), which can make it look like there's a relationship between them when there might not be one. Think of it like trying to figure out if yellow finger nails cause lung cancer - they are both caused by smoking, so appear related, but it is the smoking causing both (and so smoking needs to be measured and accounted for in order to avoid concluding that yellow finger nails cause lung cancer).
 
@@ -29,7 +35,11 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **E-value**: The E-value is a practical tool used in observational studies to assess how strong an unmeasured factor would need to be to invalidate a research finding. It helps researchers understand how robust their findings are against potential hidden factors they couldn't measure or control for. A large E-value indicates that very strong unmeasured confounding would be needed to explain away the results, suggesting the findings are more robust. Calculation is simple: For a given risk ratio (RR), the E-value is calculated using a simple formula that produces a number greater than or equal to 1. For example, if a study finds a risk ratio of 1.50, the corresponding E-value would be 2.37, meaning an unmeasured factor would need to have at least a 2.37-fold association with both the exposure and outcome to nullify the observed effect.
 
-* **Estimand , Estimator, Estimate**: *Estimand*: The target quantity of interest to be estimated. *Estimator*: The statistical method or formula used to calculate the estimate. *Estimate*: The actual numerical value obtained from the estimator
+* **Effect Modification**: When the effect of treatment varies across subgroups defined by another variable.
+
+* **Estimand , Estimator, Estimate**: *Estimand*: The target quantity of interest to be estimated. *Estimator*: The statistical method or formula used to calculate the estimate. *Estimate*: The actual numerical value obtained from the estimator.
+
+* **Exchangeability**: When treatment groups are comparable in all aspects except for the treatment received.
 
 * **External validity**: External validity refers to how well the findings of a scientific study can be applied beyond its original context. In simpler terms, it's about whether the cause-and-effect relationships discovered in a study will hold true in other situations. Compare with *internal validity*.
 
@@ -66,6 +76,10 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
 
 * **SHAP values**: SHAP (SHapley Additive exPlanations) values show how individual features (or combinations of features) in a machine learning model contribute to the final model prediction. They may be applied to all machine learning model types.
+
+* **Structural Causal Modelling**: A model combining a set of nodes with functions specifying causal relationships between inputs and outputs. This is similar to *Structural Equation Modelling* (which also used a network of functions/equations), but the Structural Causal Model is intended to map causal relationships only, not predictive relationships.
+
+* **Structural Equation Modelling**: A model combining a set of nodes with functions specifying causal *or* predictive relationships between inputs and outputs. This is similar to *Structural Causal Modelling* (which also used a network of functions/equations), but the Structural Causal Model is intended to map causal relationships only, not predictive relationships.
 
 * **Target trial emulation**: Target trial emulation is a framework that applies the principles of randomized clinical trials (RCTs) to observational data to estimate the causal effects of interventions. The process begins by designing a hypothetical randomized trial (the "target trial") that would ideally answer the research question. This protocol includes: 1) Eligibility criteria, 2) Treatment strategies
 Assignment procedures, 3) Follow-up period, 4) Outcome definitions, 5) Statistical analysis plan. 
