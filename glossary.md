@@ -49,6 +49,8 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **Heterogeneous treatment effects**: Heterogeneous treatment effects are where individual patients vary in their response to treatment. Clinical trials tend to estimate an average treatment effect across the whole population, but further analysis may reveal subgroups of patients who have smaller or larger treatment effects.
 
+* **Immortal time bias (survival bias)**: A bias that occurs in research studies when there is a period during which certain participants cannot experience the outcome being studied, creating an artificial survival advantage. Consider a study examining the effect of receiving tea and crumpets (T&C) on day 3 of intensive care unit (ICU) stay on patient survival: Group 1: Patients who received T&C on day 3, Group 2: Patients who did not receive T&C The first 3 days represent "immortal time" for Group 1 because these patients must have survived at least 3 days to receive T&C. This automatically makes Group 1 appear to have better survival rates since they couldn't have died before day 3, while Group 2 could have died at any time.
+
 * **Interaction**: Interaction in causal inference occurs when the joint effect of two exposures on an outcome differs from the sum of their individual effects.
 
 * **Interference**: Interference in causal inference occurs when one subject's treatment or exposure can affect the outcomes of other subjects. This phenomenon commonly arises in settings where social interactions influence outcomes. An example of interference is vaccination, where vaccination of one person affects others' infection risks. Or prioritisation of one patients treatment may affect the amount of time another patient waits for treatment.
@@ -71,6 +73,8 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **Per-Protocol Analysis**: Analysis of the effect of treatment when it is known the subject has taken the treatment as intended. This compares with *intention-to-treat* which analyses across the whole population where treatment was intended, whether the treatment was actually taken or not. This analysis may provide a better estimation of the inherent treatment efficacy, but over-estimate real world treatment effects.
 
+* **Prevalent user bias**: The bias in observational data where treatment is recorded for those who have tolerated the treatment (and drop-out may be hard to ascertain from the observational data). This compares with Randomized Controlled Trials (RCT) where treatment drop-out should be robustly recorded.
+
 * **Propensity score**: the probability that an individual receives a treatment or intervention, given a set of observed data about the patient/setting. This allows better comparison of treatment effects when the people more likely to receive treatment are more likely to have a good/bad outcome compared with those that do not receive treatment. It helps to simplify analysis by combining multiple features about patients/setting into a single variable. The propensity score may be used for 1) *matching*, where pairs of treated and untreated people are identified each with similar propensity scores, *weighting*, where a model includes the propensity score in order to adjust outcome by likelihood to treat, and *subclassification*, where analysis can group people with similar propensity scores. See also *inverse propensity weighting*.
 
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
@@ -80,6 +84,8 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 * **Structural Causal Modelling**: A model combining a set of nodes with functions specifying causal relationships between inputs and outputs. This is similar to *Structural Equation Modelling* (which also used a network of functions/equations), but the Structural Causal Model is intended to map causal relationships only, not predictive relationships.
 
 * **Structural Equation Modelling**: A model combining a set of nodes with functions specifying causal *or* predictive relationships between inputs and outputs. This is similar to *Structural Causal Modelling* (which also used a network of functions/equations), but the Structural Causal Model is intended to map causal relationships only, not predictive relationships.
+
+* **Survival bias**: See *immortal time bias*.
 
 * **Target trial emulation**: Target trial emulation is a framework that applies the principles of randomized clinical trials (RCTs) to observational data to estimate the causal effects of interventions. The process begins by designing a hypothetical randomized trial (the "target trial") that would ideally answer the research question. This protocol includes: 1) Eligibility criteria, 2) Treatment strategies
 Assignment procedures, 3) Follow-up period, 4) Outcome definitions, 5) Statistical analysis plan. 
