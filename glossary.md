@@ -6,7 +6,7 @@
 
 * **Backtracking counterfactuals**: an approach to causal reasoning where changes are traced backward through a causal chain while preserving the original causal laws. Unlike traditional interventional counterfactuals, backtracking allows both downstream and upstream variables to change in response to a counterfactual scenario. This allows linkage between causative factors.
 
-* **Bayes theorum**: Bayes' theorem is a mathematical formula that calculates the probability of an event based on a prior estimate of the probability of that event, and then the addition of new information. It allows us to update our probability estimates when we receive new evidence or information.
+* **Bayes theorem**: Bayes' theorem is a mathematical formula that calculates the probability of an event based on a prior estimate of the probability of that event, and then the addition of new information. It allows us to update our probability estimates when we receive new evidence or information.
 
 * **Bias**: Bias in causal inference refers to systematic deviations between observed relationships and true causal effects. There are three main types of bias that affect causal studies: 1) *Confounding bias* (or *omitted variable bias*) occurs when a variable, that is either not measured or not controlled for properly, affects both the treatment and outcome but is not included in the analysis, 2) *Selection bias* occurs when there is selection of people into a trial, or selection of people out of results collection for a trial, 3) *Measurement bias* stems from incorrect measurement of outcomes, exposures, or confounding variables.
 
@@ -26,6 +26,8 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 * **Conditional Independence**: When two sets of variables (A and B) are independent given a third set (C), expressed as (A⊥⊥B∣C). For example sea drownings (A) and ice cream sales (B) may correlate, but the correlation disappears when weather (C) is controlled for.
 
 * **Confounder**: A confounder is a variable that affects both what you're testing (like a treatment) and what you're measuring (like an outcome), which can make it look like there's a relationship between them when there might not be one. Think of it like trying to figure out if yellow finger nails cause lung cancer - they are both caused by smoking, so appear related, but it is the smoking causing both (and so smoking needs to be measured and accounted for in order to avoid concluding that yellow finger nails cause lung cancer). An example of confounding is that multiple observational studies suggested HRT reduced cardiovascular risks, but these findings were overturned by a Randomized Control Trial. Subsequent re-analysis of observational data suggested one signficant confounder was that women who are less deprvived are more likely to take HRT and also have a lower baseline cardiovascular risk (the failure of the HRT observational study was also, in part, due to *Prevalent user bias* and *immortal time bias* because the observational studies included women who were already taking and tolerating HRT before the study began, and these women had a lower likelihood of cardiovascular problems at the start of follow-up). There was also *healthy user bias* where HRT was more likely to be chosen by otherwise healthy women.
+
+* **Confounding by indication**: Occurs when treatment choice is influenced by patient characteristics.
 
 * **Counterfactual**: The hypothetical outcome that would have occurred under a different treatment condition.
 
@@ -53,6 +55,10 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **Immortal time bias (survival bias)**: A bias that occurs in research studies when there is a period during which certain participants cannot experience the outcome being studied, creating an artificial survival advantage. Consider a study examining the effect of receiving tea and crumpets (T&C) on day 3 of intensive care unit (ICU) stay on patient survival: Group 1: Patients who received T&C on day 3, Group 2: Patients who did not receive T&C The first 3 days represent "immortal time" for Group 1 because these patients must have survived at least 3 days to receive T&C. This automatically makes Group 1 appear to have better survival rates since they couldn't have died before day 3, while Group 2 could have died at any time.
 
+* **Incidence**: Incidence is the number of new cases of a condition that develop in a population during a specified time period. Compare to *prevalence*.
+
+* **Information bias**: Errors or incompleteness in data collection that occur in one group more than another.
+
 * **Interaction**: Interaction in causal inference occurs when the joint effect of two exposures on an outcome differs from the sum of their individual effects.
 
 * **Interference**: Interference in causal inference occurs when one subject's treatment or exposure can affect the outcomes of other subjects. This phenomenon commonly arises in settings where social interactions influence outcomes. An example of interference is vaccination, where vaccination of one person affects others' infection risks. Or prioritisation of one patients treatment may affect the amount of time another patient waits for treatment.
@@ -75,11 +81,15 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **Per-Protocol Analysis**: Analysis of the effect of treatment when it is known the subject has taken the treatment as intended. This compares with *intention-to-treat* which analyses across the whole population where treatment was intended, whether the treatment was actually taken or not. This analysis may provide a better estimation of the inherent treatment efficacy, but over-estimate real world treatment effects.
 
+* **Prevalence**: The proportion of a population that has a specific condition at a given time or during a specific period. Compare to *incidence*.
+
 * **Prevalent user bias**: The bias in observational data where treatment is recorded for those who have tolerated the treatment (and drop-out may be hard to ascertain from the observational data). This compares with Randomized Controlled Trials (RCT) where treatment drop-out should be robustly recorded.
 
 * **Propensity score**: the probability that an individual receives a treatment or intervention, given a set of observed data about the patient/setting. This allows better comparison of treatment effects when the people more likely to receive treatment are more likely to have a good/bad outcome compared with those that do not receive treatment. It helps to simplify analysis by combining multiple features about patients/setting into a single variable. The propensity score may be used for 1) *matching*, where pairs of treated and untreated people are identified each with similar propensity scores, *weighting*, where a model includes the propensity score in order to adjust outcome by likelihood to treat, and *subclassification*, where analysis can group people with similar propensity scores. See also *inverse propensity weighting*.
 
 * **Risk ratio**: A risk ratio, also known as relative risk, is a number that shows how much more likely one group is to experience a specific health outcome compared to another group. Risk ratios differ from hazard ratios: Risk ratios measure cumulative risk at a fixed endpoint, whereas hazard ratios measure instantaneous risk at any given point during the study period.
+
+* **Selection bias**: Bias that affects studies due to imperfect selection of people in the study. This includes 1) *Sampling bias*: Occurs when study participants are not representative of the target population, 2) *Prevalence-incidence* bias (Neyman bias) occurs when extremely sick or extremely healthy individuals are excluded from research studies, 3) *Attrition bias*: Results from differential loss of participants during follow-up, 4) *Self-selection bias*: When participants' decision to participate creates systematic differences, 6) *Referral bias*: Related to how participants are referred to the study.
 
 * **SHAP values**: SHAP (SHapley Additive exPlanations) values show how individual features (or combinations of features) in a machine learning model contribute to the final model prediction. They may be applied to all machine learning model types.
 
