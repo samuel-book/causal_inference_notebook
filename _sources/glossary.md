@@ -85,6 +85,8 @@ Score-based methods evaluate potential causal graphs using scoring functions and
 
 * **Structural Equation Modelling**: A model combining a set of nodes with functions specifying causal *or* predictive relationships between inputs and outputs. This is similar to *Structural Causal Modelling* (which also used a network of functions/equations), but the Structural Causal Model is intended to map causal relationships only, not predictive relationships.
 
+* **Survival bias**: See *immortal time bias*.
+
 * **Target trial emulation**: Target trial emulation is a framework that applies the principles of randomized clinical trials (RCTs) to observational data to estimate the causal effects of interventions. The process begins by designing a hypothetical randomized trial (the "target trial") that would ideally answer the research question. This protocol includes: 1) Eligibility criteria, 2) Treatment strategies
 Assignment procedures, 3) Follow-up period, 4) Outcome definitions, 5) Statistical analysis plan. 
 
