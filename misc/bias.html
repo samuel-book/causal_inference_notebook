@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Types of bias in observational studies &#8212; Causal Inference Notebook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'misc/bias';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deconfounding" href="../2_deconfounding/deconfounding.html" />
+    <link rel="prev" title="Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke" href="../1_dags/01_dag.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Causal Inference Notebook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Causal Inference Notebook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Causal Inference Notebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General info</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Book of Why (Judea Pearl)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pearl/01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/02_ladder_of_causation.html">The ladder of causation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/03_genesis_of_causal_inference.html">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04a_bayes_theorem.html">Bayes and causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04b_bayesian_networks.html">Bayesian networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Directed Acyclic Graphs (DAGs)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_dags/01_dag.html">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deconfounding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_deconfounding/deconfounding.html">Deconfounding</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bradford_hill.html">Bradford Hill criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="causal_discovery.html">Key causal discovery methods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/misc/bias.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Types of bias in observational studies</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Types of bias in observational studies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">Selection bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-bias">Information bias</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#confounding">Confounding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colliding">Colliding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-related-bias">Time-Related Bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-or-publication-bias">Reporting or publication bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ecological-fallacy">Ecological fallacy**</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confirmation-bias">Confirmation bias</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="types-of-bias-in-observational-studies">
+<h1>Types of bias in observational studies<a class="headerlink" href="#types-of-bias-in-observational-studies" title="Link to this heading">#</a></h1>
+<p>Below are types of bias that occur in studies, grouped by broad classifications (some biases may straddle general categories, but are placed in just one category here to avoid duplication).</p>
+<p><img alt="" src="../_images/bias_mindmap.png" /></p>
+<section id="selection-bias">
+<h2>Selection bias<a class="headerlink" href="#selection-bias" title="Link to this heading">#</a></h2>
+<p>Selection bias occurs when the study sample is not representative of the target population, leading to skewed results. This may be due to various types of types:</p>
+<ul class="simple">
+<li><p><strong>Sampling Bias</strong>: When certain members of the intended population are less likely to be included than others.</p></li>
+<li><p><strong>Self-Selection Bias</strong>: Occurs when individuals volunteer to participate in studies, potentially differing significantly from those who don’t participate. For example, people who respond to health surveys may be more health-conscious than the general population.</p></li>
+<li><p><strong>Survivor Bias</strong>: Happens when only successful cases or “survivors” of a process are studied, ignoring those who didn’t make it through.</p></li>
+<li><p><strong>Attrition Bias</strong>: Arises when participants who drop out of a study differ systematically from those who remain.</p></li>
+<li><p><strong>Channeling Bias</strong>: Patients are assigned to different groups based on characteristics like age or severity of illness, creating imbalances between cohorts.</p></li>
+<li><p><strong>Admission (Berkson) Bias</strong>: Arises when hospitalized patients are compared to non-hospitalized ones, as the former group tends to be sicker and less representative.</p></li>
+<li><p><strong>Treatment Access Bias</strong>: Happens when subjects have decreased access to healthcare due to cultural or socioeconomic factors.</p></li>
+<li><p><strong>Centripetal Bias</strong>: Occurs when a clinician’s or clinic’s reputation attracts patients not representative of the general population.</p></li>
+</ul>
+</section>
+<section id="information-bias">
+<h2>Information bias<a class="headerlink" href="#information-bias" title="Link to this heading">#</a></h2>
+<p>Information bias occurs due to errors in measuring or recording exposure, outcome, or other variables.</p>
+<ul class="simple">
+<li><p><strong>Recall Bias</strong>: Participants may remember past exposures differently based on their disease status (e.g., cases recalling exposures more vividly than controls).</p></li>
+<li><p><strong>Misclassification Bias</strong>: Errors in categorizing participants into exposure or outcome groups: <em>Differential Misclassification</em>: Errors differ between study groups, leading to over-estimation or under-estimation of effect size. <em>Non-Differential Misclassification</em>: Errors occur equally across groups but dilute associations.</p></li>
+<li><p><strong>Hawthorne Effect</strong>: Participants alter their behaviour simply because they are being observed. This can include <em>Social desirability bias</em>, when respondents answer questions in a way they believe will be viewed favourably by others, such as over-reporting positive behaviours or under-reporting negative ones. Participants may also change behaviour or reporting if they know which study group they have been assigned to.</p></li>
+<li><p><strong>Observer bias (Actor-observer bias)</strong>: Occurs when the investigator’s prior knowledge or beliefs of the hypothesis or participant status influences how information is collected or interpreted.  Includes <em>interviewer bias</em> when an interviewer asks leading questions that systematically influence responses. There may also be <em>Observer drift</em> when observers become less careful in taking measurements over time.</p></li>
+<li><p><strong>Measurement bias</strong>: Stems from systematic errors in data collection, inconsistent measurement methods, or poorly calibrated instruments.</p></li>
+<li><p><strong>Detection bias</strong>: occurs when outcome information is collected differently between groups.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="confounding">
+<h1>Confounding<a class="headerlink" href="#confounding" title="Link to this heading">#</a></h1>
+<p>Confounding occurs when an extraneous variable influences both the exposure and outcome, creating a false association.</p>
+<ul class="simple">
+<li><p><strong>Positive Confounding</strong>: occurs when the confounder enhances or overestimates a true association between the exposure and outcome.</p></li>
+<li><p><strong>Negative Confounding</strong>: occurs when the confounder reduces or underestimates a true association between the exposure and outcome.</p></li>
+<li><p><strong>Spurious Association</strong>: creates an apparent association between variables when no real association exists. See <em>colliding</em> below.</p></li>
+<li><p><strong>Hidden Association</strong>: results in an apparent absence of association despite a real relationship existing between variables.</p></li>
+<li><p><strong>Simpson’s Paradox</strong>: A trend or association that appears in several groups of data but disappears or reverses when the groups are combined. This occurs when there is a lurking or confounding variable that affects the relationship between two variables.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="colliding">
+<h1>Colliding<a class="headerlink" href="#colliding" title="Link to this heading">#</a></h1>
+<p>A collider is a variable that is causally influenced by two or more other variables, where the causal arrows appear to “collide” at the node in directed acyclic graphs (DAGs). When researchers condition on (control for, adjust for, or restrict analysis based on) a collider, it can create spurious associations between the variables that influence it.  An example of colliding is the the obesity paradox: where obesity appears protective in diabetes patients because diabetes status is a collider between obesity and mortality.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="time-related-bias">
+<h1>Time-Related Bias<a class="headerlink" href="#time-related-bias" title="Link to this heading">#</a></h1>
+<p>Time-related biases arise from improper handling of time in study design.</p>
+<ul class="simple">
+<li><p><strong>Immortal Time Bias</strong>: Misclassifies a period during which participants cannot experience the outcome as part of the follow-up time for one group, artificially inflating its survival. This bias is created when patients must survive sufficiently long to receive treatment, making them effectively “immortal” during that period.</p></li>
+<li><p><strong>Survivor Bias</strong>: Excludes individuals who did not survive long enough to be included in the study cohort.</p></li>
+<li><p><strong>Inception/Lead-Time Bias</strong>: Occurs when patients already receiving an intervention are included in analyses, excluding those who experienced outcomes early after treatment starts. Or it may arise when earlier detection of a condition (e.g., through screening) inaccurately appears to increase survival time, even if natural disease progression is unchanged.</p></li>
+<li><p><strong>Time window bias</strong>: Affects studies when the time window for defining exposure differs between comparison groups.</p></li>
+<li><p><strong>Time-Lag Bias</strong>: Appears when comparing first-line treatments with second or third-line treatments without accounting for disease duration or prior medication use.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reporting-or-publication-bias">
+<h1>Reporting or publication bias<a class="headerlink" href="#reporting-or-publication-bias" title="Link to this heading">#</a></h1>
+<p>Published studies may be biased towards those that showed significant or positive findings.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ecological-fallacy">
+<h1>Ecological fallacy**<a class="headerlink" href="#ecological-fallacy" title="Link to this heading">#</a></h1>
+<p>An Ecological fallacy occurs when conclusions about individuals are drawn from analyses of group (aggregate) data. An example is Robinson’s Paradox where, in the 1950s, a study found that states with higher proportions of foreign-born residents had lower literacy rates. However, when examining specific groups within states, this relationship disappeared.</p>
+<section id="confirmation-bias">
+<h2>Confirmation bias<a class="headerlink" href="#confirmation-bias" title="Link to this heading">#</a></h2>
+<p>Confirmation bias reflects the tendency to seek or interpret information that supports pre-existing beliefs, ignoring contradictory evidence.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./misc"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../1_dags/01_dag.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2_deconfounding/deconfounding.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deconfounding</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Types of bias in observational studies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">Selection bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-bias">Information bias</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#confounding">Confounding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colliding">Colliding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-related-bias">Time-Related Bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-or-publication-bias">Reporting or publication bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ecological-fallacy">Ecological fallacy**</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confirmation-bias">Confirmation bias</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The SAMueL Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
