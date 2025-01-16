@@ -17,10 +17,9 @@ parts:
 - caption: Directed Acyclic Graphs (DAGs)
   chapters:
   - file: 1_dags/01_dag.ipynb
-- caption: Deconfounding
-  chapters:
-  - file: 2_deconfounding/deconfounding.md
 - caption: Miscellaneous
   chapters:
   - file: misc/bradford_hill.md
+  - file: misc/bias.md
+  - file: 2_deconfounding/deconfounding.md
   - file: misc/causal_discovery.md

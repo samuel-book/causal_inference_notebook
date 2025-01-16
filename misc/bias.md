@@ -1,6 +1,8 @@
-# Types of bias
+# Types of bias in observational studies
 
 Below are types of bias that occur in studies, grouped by broad classifications (some biases may straddle general categories, but are placed in just one category here to avoid duplication).
+
+![](bias_mindmap.png)
 
 ## Selection bias
 
@@ -74,7 +76,7 @@ Time-related biases arise from improper handling of time in study design.
 
 Published studies may be biased towards those that showed significant or positive findings.
 
-# Ecological fallacy**
+# Ecological fallacy
 
 An Ecological fallacy occurs when conclusions about individuals are drawn from analyses of group (aggregate) data. An example is Robinson's Paradox where, in the 1950s, a study found that states with higher proportions of foreign-born residents had lower literacy rates. However, when examining specific groups within states, this relationship disappeared.
 
