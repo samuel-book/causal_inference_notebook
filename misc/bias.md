@@ -72,16 +72,15 @@ Time-related biases arise from improper handling of time in study design.
 
 * **Time-Lag Bias**: Appears when comparing first-line treatments with second or third-line treatments without accounting for disease duration or prior medication use.
 
-# Reporting or publication bias
+# Other
 
-Published studies may be biased towards those that showed significant or positive findings.
+* **Reporting or publication bias**: Published studies may be biased towards those that showed significant or positive findings.
 
-# Ecological fallacy
+* **Ecological fallacy**: An Ecological fallacy occurs when conclusions about individuals are drawn from analyses of group (aggregate) data. An example is Robinson's Paradox where, in the 1950s, a study found that states with higher proportions of foreign-born residents had lower literacy rates. However, when examining specific groups within states, this relationship disappeared.
 
-An Ecological fallacy occurs when conclusions about individuals are drawn from analyses of group (aggregate) data. An example is Robinson's Paradox where, in the 1950s, a study found that states with higher proportions of foreign-born residents had lower literacy rates. However, when examining specific groups within states, this relationship disappeared.
+* **Confirmation bias**: Confirmation bias reflects the tendency to seek or interpret information that supports pre-existing beliefs, ignoring contradictory evidence.
 
-## Confirmation bias
-Confirmation bias reflects the tendency to seek or interpret information that supports pre-existing beliefs, ignoring contradictory evidence.
+* **Multiplicity bias (Multiple comparisons problem)**: Multiplicity bias, also known as the multiple comparisons problem, occurs when multiple statistical tests are performed simultaneously, leading to an increased risk of false positive results (Type I errors). This happens because each additional statistical test increases the likelihood of finding a significant result purely by chance.
 
 
 
