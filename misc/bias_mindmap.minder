@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<minder version="1.16.2" parent-etag="119863051" etag="702903565">
-  <theme name="default" label="Light" index="0"/>
+<minder version="1.16.2" parent-etag="1823655007" etag="1008084846">
+  <theme name="default" label="Light" index="1"/>
   <styles>
     <style level="0" isset="true" branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="rounded" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="10" nodepadding="10" nodefont="Sans 11" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100" calloutfont="Sans 12" calloutpadding="5" calloutptrwidth="20" calloutptrlength="20"/>
     <style level="1" isset="true" branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100" calloutfont="Sans 12" calloutpadding="5" calloutptrwidth="20" calloutptrlength="20"/>
@@ -16,7 +16,7 @@
   </styles>
   <images/>
   <nodes>
-    <node id="0" posx="1152.12109375" posy="348.8046875" width="57" height="49" side="left" fold="false" treesize="833" summarized="false" layout="Horizontal" group="false">
+    <node id="0" posx="1152.12109375" posy="348.8046875" width="57" height="49" side="left" fold="false" treesize="882" summarized="false" layout="Horizontal" group="false">
       <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
       <nodename maxwidth="200">
         <text data="Bias"/>
@@ -141,63 +141,63 @@
             </node>
           </nodes>
         </node>
-        <node id="1" posx="1309.12109375" posy="128.3046875" width="122" height="49" side="right" fold="false" treesize="392" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+        <node id="1" posx="1309.12109375" posy="79.3046875" width="122" height="49" side="right" fold="false" treesize="392" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
           <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
           <nodename maxwidth="200">
             <text data="Selection bias"/>
           </nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="2" posx="1531.12109375" posy="-43.1953125" width="125" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="2" posx="1531.12109375" posy="-92.1953125" width="125" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Sampling bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="3" posx="1531.12109375" posy="5.8046875" width="153" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="3" posx="1531.12109375" posy="-43.1953125" width="153" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Self-Selection Bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="4" posx="1531.12109375" posy="54.8046875" width="116" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="4" posx="1531.12109375" posy="5.8046875" width="116" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Survivor bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="5" posx="1531.12109375" posy="103.8046875" width="116" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="5" posx="1531.12109375" posy="54.8046875" width="116" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Attrition bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="6" posx="1531.12109375" posy="152.8046875" width="138" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="6" posx="1531.12109375" posy="103.8046875" width="138" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Channeling bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="7" posx="1531.12109375" posy="201.8046875" width="132" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="7" posx="1531.12109375" posy="152.8046875" width="132" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Admission bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="9" posx="1531.12109375" posy="250.8046875" width="178" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="9" posx="1531.12109375" posy="201.8046875" width="178" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Treatment access bias"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="10" posx="1531.12109375" posy="299.8046875" width="135" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="10" posx="1531.12109375" posy="250.8046875" width="135" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Centripetal bias"/>
@@ -206,42 +206,42 @@
             </node>
           </nodes>
         </node>
-        <node id="20" posx="1309.12109375" posy="446.8046875" width="118" height="49" side="right" fold="false" treesize="245" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+        <node id="20" posx="1309.12109375" posy="397.8046875" width="118" height="49" side="right" fold="false" treesize="245" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
           <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
           <nodename maxwidth="200">
             <text data="Confounding"/>
           </nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="21" posx="1527.12109375" posy="348.8046875" width="173" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="21" posx="1527.12109375" posy="299.8046875" width="173" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Positive confounding"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="23" posx="1527.12109375" posy="397.8046875" width="180" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="23" posx="1527.12109375" posy="348.8046875" width="180" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Negative confounding"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="24" posx="1527.12109375" posy="446.8046875" width="170" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="24" posx="1527.12109375" posy="397.8046875" width="170" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Spurious association"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="25" posx="1527.12109375" posy="495.8046875" width="159" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="25" posx="1527.12109375" posy="446.8046875" width="159" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Hidden association"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="27" posx="1527.12109375" posy="544.8046875" width="156" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
+            <node id="27" posx="1527.12109375" posy="495.8046875" width="156" height="49" side="right" fold="false" treesize="49" color="#f9c440" colorroot="false" summarized="false" layout="Horizontal" group="false">
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Simpsons paradox"/>
@@ -250,33 +250,49 @@
             </node>
           </nodes>
         </node>
-        <node id="35" posx="1309.12109375" posy="593.8046875" width="210" height="49" side="right" fold="false" treesize="49" color="#715344" colorroot="false" summarized="false" layout="Horizontal" group="false">
+        <node id="41" posx="1309.12109375" posy="642.8046875" width="67" height="49" side="right" fold="false" treesize="245" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
           <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
           <nodename maxwidth="200">
-            <text data="Reporting/publication bias"/>
+            <text data="Other"/>
           </nodename>
           <nodenote></nodenote>
-        </node>
-        <node id="36" posx="1309.12109375" posy="642.8046875" width="144" height="49" side="right" fold="false" treesize="49" color="#333333" colorroot="false" summarized="false" layout="Horizontal" group="false">
-          <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
-          <nodename maxwidth="200">
-            <text data="Ecological fallacy"/>
-          </nodename>
-          <nodenote></nodenote>
-        </node>
-        <node id="37" posx="1309.12109375" posy="691.8046875" width="151" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
-          <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
-          <nodename maxwidth="200">
-            <text data="Confirmation bias"/>
-          </nodename>
-          <nodenote></nodenote>
-        </node>
-        <node id="38" posx="1309.12109375" posy="740.8046875" width="135" height="49" side="right" fold="false" treesize="49" color="#c6262e" colorroot="false" summarized="false" layout="Horizontal" group="false">
-          <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
-          <nodename maxwidth="200">
-            <text data="Multiplicity bias"/>
-          </nodename>
-          <nodenote></nodenote>
+          <nodes>
+            <node id="35" posx="1476.12109375" posy="544.8046875" width="210" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Reporting/publication bias"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="37" posx="1476.12109375" posy="593.8046875" width="151" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Confirmation bias"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="36" posx="1476.12109375" posy="642.8046875" width="144" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Ecological fallacy"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="38" posx="1476.12109375" posy="691.8046875" width="135" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Multiplicity bias"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="42" posx="1476.12109375" posy="740.8046875" width="174" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Omitted variable bias"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+          </nodes>
         </node>
       </nodes>
     </node>

@@ -82,18 +82,7 @@ Time-related biases arise from improper handling of time in study design.
 
 * **Multiplicity bias (Multiple comparisons problem)**: Multiplicity bias, also known as the multiple comparisons problem, occurs when multiple statistical tests are performed simultaneously, leading to an increased risk of false positive results (Type I errors). This happens because each additional statistical test increases the likelihood of finding a significant result purely by chance.
 
-
-
-
-
-
-
-
-
-
-
-
-
+* **Omitted variable bias**: is a statistical error that occurs when a regression model fails to include one or more relevant variables that influence both the dependent and independent variables.
 
 
 
