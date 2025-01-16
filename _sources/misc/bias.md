@@ -76,7 +76,7 @@ Time-related biases arise from improper handling of time in study design.
 
 Published studies may be biased towards those that showed significant or positive findings.
 
-# Ecological fallacy**
+# Ecological fallacy
 
 An Ecological fallacy occurs when conclusions about individuals are drawn from analyses of group (aggregate) data. An example is Robinson's Paradox where, in the 1950s, a study found that states with higher proportions of foreign-born residents had lower literacy rates. However, when examining specific groups within states, this relationship disappeared.
 
