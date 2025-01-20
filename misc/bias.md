@@ -84,6 +84,8 @@ Time-related biases arise from improper handling of time in study design.
 
 * **Omitted variable bias**: is a statistical error that occurs when a regression model fails to include one or more relevant variables that influence both the dependent and independent variables.
 
+* **Latent variable**: An unobserved construct that can only be inferred indirectly through models using observable or measurable data. Examples are IQ, or depression scores derived from questionnaires. Latent variables may be confounders, and so if not measured in some way, may lead to false conslusions.
+
 
 
 

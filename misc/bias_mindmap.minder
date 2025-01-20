@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<minder version="1.16.2" parent-etag="1823655007" etag="1008084846">
-  <theme name="default" label="Light" index="1"/>
+<minder version="1.16.2" parent-etag="340130953" etag="1352381001">
+  <theme name="default" label="Light" index="-1"/>
   <styles>
     <style level="0" isset="true" branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="rounded" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="10" nodepadding="10" nodefont="Sans 11" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100" calloutfont="Sans 12" calloutpadding="5" calloutptrwidth="20" calloutptrlength="20"/>
     <style level="1" isset="true" branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100" calloutfont="Sans 12" calloutpadding="5" calloutptrwidth="20" calloutptrlength="20"/>
@@ -16,7 +16,7 @@
   </styles>
   <images/>
   <nodes>
-    <node id="0" posx="1152.12109375" posy="348.8046875" width="57" height="49" side="left" fold="false" treesize="882" summarized="false" layout="Horizontal" group="false">
+    <node id="0" posx="1152.12109375" posy="348.8046875" width="57" height="49" side="left" fold="false" treesize="931" summarized="false" layout="Horizontal" group="false">
       <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
       <nodename maxwidth="200">
         <text data="Bias"/>
@@ -250,7 +250,7 @@
             </node>
           </nodes>
         </node>
-        <node id="41" posx="1309.12109375" posy="642.8046875" width="67" height="49" side="right" fold="false" treesize="245" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+        <node id="41" posx="1309.12109375" posy="667.3046875" width="67" height="49" side="right" fold="false" treesize="294" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
           <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
           <nodename maxwidth="200">
             <text data="Other"/>
@@ -289,6 +289,13 @@
               <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
               <nodename maxwidth="200">
                 <text data="Omitted variable bias"/>
+              </nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="43" posx="1476.12109375" posy="789.8046875" width="136" height="49" side="right" fold="false" treesize="49" color="#f37329" colorroot="false" summarized="false" layout="Horizontal" group="false">
+              <style branchmargin="100" branchradius="25" linktype="straight" linkwidth="5" linkarrow="false" linkdash="solid" nodeborder="underlined" nodewidth="200" nodeborderwidth="4" nodefill="false" nodemargin="8" nodepadding="6" nodefont="Sans 11" nodemarkup="true"/>
+              <nodename maxwidth="200">
+                <text data="Latent variables"/>
               </nodename>
               <nodenote></nodenote>
             </node>
