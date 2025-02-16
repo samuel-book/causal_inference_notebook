@@ -1,5 +1,7 @@
 # Glossary
 
+* **Aleatory uncertainty**: Uncertainty due to randomness e.g. whether a coin toss will results in a heads or tails. It cannot be reduced through additional knowledge or data collection, and is usually managed by talking about probabilities.
+
 * **Antecedent**: An antecedent in causal models refers to a preceding event, condition, or characteristic that influences or determines a subsequent outcome.
 
 * **Average treatment effect**: the difference in mean outcomes between treated and untreated patients across a population (often a population of patients who are considered eligible for treatment). In outcome models the *counterfactual* outcomes for each patient for when they do or or do not receive treatment may be predicted (and averaged across the population). In clinical trails it is the average difference between treated and untreated outcomes (see also *intention-to-treat* and *per-protocol analysis*).
@@ -38,9 +40,13 @@
 
 * **Effect Modification**: When the effect of treatment varies across subgroups defined by another variable.
 
+* **Epistemic uncertainty**: Epistemic uncertainty stems from a lack of knowledge or incomplete understanding of a system, model, or process. It is often considered reducible through further research, data collection, or improved modelling. Apart from collecting more data, it may be explored by sensitivity analysis, expert judgement, or Bayesian methods.
+
 * **Estimand , Estimator, Estimate**: *Estimand*: The target quantity of interest to be estimated. *Estimator*: The statistical method or formula used to calculate the estimate. *Estimate*: The actual numerical value obtained from the estimator.
 
 * **Exchangeability**: When treatment groups are comparable in all aspects except for the treatment received.
+
+* **Exogenous variable**: Variables that are not affected by variables within the defined model. They are usually treated as constants in a model.
 
 * **External validity**: External validity refers to how well the findings of a scientific study can be applied beyond its original context. In simpler terms, it's about whether the cause-and-effect relationships discovered in a study will hold true in other situations. Compare with *internal validity*.
 
