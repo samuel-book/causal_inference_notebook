@@ -59,7 +59,7 @@ https://youtu.be/pYxNSUDSFH4
 
 ![](images/likelihood_probability.png)
 
-## A worked example
+## A worked example (diagnostic test)
 
 "Suppose you take a medical test and it comes back positive. How likely is it that you have the disease?"
 
@@ -83,6 +83,24 @@ Let's consider a 40-year old woman:
 * *P(T)* = (1/700 * 0.73) + (699/700 * 0.12) = 0.121
 
 * $P(D|T) = \frac{P(T|D)\times P(D)}{P(T)} = \frac{0.73\times 1/700}{0.121} = 0.0086$ (1 in 116).
+
+## Another worked example of a diagnostic test
+
+* A disease has a incidence rate in the general population of 0.1%.
+* A test has been developed:
+	* 100% sensitivity: P(positive|disease) = 1.0
+	* 5% false positive: P(positive|no disease) = 0.05
+* Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?
+	* We want to compute P(disease|positive)
+	* Let's imagine 1000 people
+	* 1 person will have the disease, 999 do not
+	* The 1 disease person will test positive
+	* Of 999 non-positive ~50 will test positive
+	* So 1 real disease out of 51 non-disease positive
+	* = 1/51= 0.0196 = ~2%
+
+![](images/bayes_worked_example_2.png)
+
 
 
 
@@ -108,26 +126,6 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 * Another way of looking at this is to ask of all the cases where E is true (20 farmers + 4 librarians), what proportion are librarians = 4/24 = 0.167.
 
 ![ ](./images/bayes_worked_example.png)
-
-## Another worked example
-
-* A disease has a incidence rate in the general population of 0.1%.
-* A test has been developed:
-	* 100% sensitivity: P(positive|disease) = 1.0
-	* 5% false positive: P(positive|no disease) = 0.05
-* Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?
-	* We want to compute P(disease|positive)
-	* Let's imagine 1000 people
-	* 1 person will have the disease, 999 do not
-	* The 1 disease person will test positive
-	* Of 999 non-positive ~50 will test positive
-	* So 1 real disease out of 51 non-disease positive
-	* = 1/51= 0.0196 = ~2%
-
-![](images/bayes_worked_example_2.png)
-
-
-
 
 
 
