@@ -34,6 +34,10 @@ With Bayes theorem we do not need to know all probabilities:
 
 $P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}$
 
+Or using Evidence and Hypothesis (what is the probability our hypothesis is true given the evidence):
+
+$P(H|E) = \frac{P(E|H)\times P(H)}{P(E)}$
+
 ![](images/bayes_theorem.png)
 
 The *marginalization* is the combined probability of B if the hypothesis (A) is true, or not true:
