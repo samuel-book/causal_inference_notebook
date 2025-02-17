@@ -358,9 +358,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-diagnostic-test">A worked example (diagnostic test)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example-of-a-diagnostic-test">Another worked example of a diagnostic test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Another worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>
@@ -419,8 +419,8 @@ document.write(`
 <p><img alt="" src="../_images/likelihood_probability.png" /></p>
 </section>
 </section>
-<section id="a-worked-example">
-<h2>A worked example<a class="headerlink" href="#a-worked-example" title="Link to this heading">#</a></h2>
+<section id="a-worked-example-diagnostic-test">
+<h2>A worked example (diagnostic test)<a class="headerlink" href="#a-worked-example-diagnostic-test" title="Link to this heading">#</a></h2>
 <p>“Suppose you take a medical test and it comes back positive. How likely is it that you have the disease?”</p>
 <p>Our evidence (E) is a positive test.
 Our hypothesis (H) is that we have the disease.</p>
@@ -437,6 +437,30 @@ Our hypothesis (H) is that we have the disease.</p>
 <li><p><em>P(T)</em> = (1/700 * 0.73) + (699/700 * 0.12) = 0.121</p></li>
 <li><p><span class="math notranslate nohighlight">\(P(D|T) = \frac{P(T|D)\times P(D)}{P(T)} = \frac{0.73\times 1/700}{0.121} = 0.0086\)</span> (1 in 116).</p></li>
 </ul>
+</section>
+<section id="another-worked-example-of-a-diagnostic-test">
+<h2>Another worked example of a diagnostic test<a class="headerlink" href="#another-worked-example-of-a-diagnostic-test" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A disease has a incidence rate in the general population of 0.1%.</p></li>
+<li><p>A test has been developed:</p>
+<ul>
+<li><p>100% sensitivity: P(positive|disease) = 1.0</p></li>
+<li><p>5% false positive: P(positive|no disease) = 0.05</p></li>
+</ul>
+</li>
+<li><p>Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?</p>
+<ul>
+<li><p>We want to compute P(disease|positive)</p></li>
+<li><p>Let’s imagine 1000 people</p></li>
+<li><p>1 person will have the disease, 999 do not</p></li>
+<li><p>The 1 disease person will test positive</p></li>
+<li><p>Of 999 non-positive ~50 will test positive</p></li>
+<li><p>So 1 real disease out of 51 non-disease positive</p></li>
+<li><p>= 1/51= 0.0196 = ~2%</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/bayes_worked_example_2.png" /></p>
 </section>
 <section id="another-worked-example">
 <h2>Another worked example<a class="headerlink" href="#another-worked-example" title="Link to this heading">#</a></h2>
@@ -477,30 +501,6 @@ Our hypothesis (H) is that we have the disease.</p>
 <li><p>Another way of looking at this is to ask of all the cases where E is true (20 farmers + 4 librarians), what proportion are librarians = 4/24 = 0.167.</p></li>
 </ul>
 <p><img alt=" " src="../_images/bayes_worked_example.png" /></p>
-</section>
-<section id="id1">
-<h2>Another worked example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>A disease has a incidence rate in the general population of 0.1%.</p></li>
-<li><p>A test has been developed:</p>
-<ul>
-<li><p>100% sensitivity: P(positive|disease) = 1.0</p></li>
-<li><p>5% false positive: P(positive|no disease) = 0.05</p></li>
-</ul>
-</li>
-<li><p>Suppose a randomly selected person has the test and it is positive, what is the probability that they actually have the disease?</p>
-<ul>
-<li><p>We want to compute P(disease|positive)</p></li>
-<li><p>Let’s imagine 1000 people</p></li>
-<li><p>1 person will have the disease, 999 do not</p></li>
-<li><p>The 1 disease person will test positive</p></li>
-<li><p>Of 999 non-positive ~50 will test positive</p></li>
-<li><p>So 1 real disease out of 51 non-disease positive</p></li>
-<li><p>= 1/51= 0.0196 = ~2%</p></li>
-</ul>
-</li>
-</ul>
-<p><img alt="" src="../_images/bayes_worked_example_2.png" /></p>
 </section>
 <section id="naive-bayes-multinomial-naive-bayes">
 <h2>Naive Bayes (Multinomial Naive Bayes)<a class="headerlink" href="#naive-bayes-multinomial-naive-bayes" title="Link to this heading">#</a></h2>
@@ -593,9 +593,9 @@ But, in the above example ‘lunch’ is given 0 probability in spam as it has n
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-likelihood">Probability and likelihood</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example-diagnostic-test">A worked example (diagnostic test)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example-of-a-diagnostic-test">Another worked example of a diagnostic test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Another worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>
