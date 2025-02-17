@@ -360,6 +360,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Another worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>
@@ -418,6 +419,25 @@ document.write(`
 </section>
 <section id="a-worked-example">
 <h2>A worked example<a class="headerlink" href="#a-worked-example" title="Link to this heading">#</a></h2>
+<p>“Suppose you take a medical test and it comes back positive. How likely is it that you have the disease?”</p>
+<p>Our evidence (E) is a positive test.
+Our hypothesis (H) is that we have the disease.</p>
+<ul class="simple">
+<li><p><em>P(test|disease)</em> is the <em>sensitivity</em> of the test, and is the <em>likeihood</em> or <em>forward probability</em> in Bayes. It is the same as <em>P(E|H)</em>.</p></li>
+<li><p>What we care about is the <em>inverse probability</em> to sensitivity - what is the probability of having the disease if the test is positive: <em>P(disease|test)</em> or <em>P(H|E)</em>.</p></li>
+</ul>
+<p>Let’s consider a 40-year old woman:</p>
+<ul class="simple">
+<li><p>The probability of getting breast cancer in a year is about 1 in 700. That is our <em>prior</em> probability.</p></li>
+<li><p>The sensitivity of mammograms for a 40-year woman is 73 percent.</p></li>
+<li><p>The false positive rate (1 - sensitivity) for a 40-year woman is about 12 percent.</p></li>
+<li><p>A positive test can come from those with cancer (true positive) or those without (false positive). <em>P(T)</em> is therefore a weighted average of <em>P(T|D)</em> (sensitivity) and <em>P(T|~D)</em> (1 - specificity).</p></li>
+<li><p><em>P(T)</em> = (1/700 * 0.73) + (699/700 * 0.12) = 0.121</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(D|T) = \frac{P(T|D)\times P(D)}{P(T)} = \frac{0.73\times 1/700}{0.121} = 0.0086\)</span> (1 in 116).</p></li>
+</ul>
+</section>
+<section id="another-worked-example">
+<h2>Another worked example<a class="headerlink" href="#another-worked-example" title="Link to this heading">#</a></h2>
 <p>We are told a person is shy and likes to keep things tidy. Are they most likely a librarian?</p>
 <ul class="simple">
 <li><p>Let us assume there are 20X more farmers than librarians (our population is a librarian + 21 farmer)</p>
@@ -456,8 +476,8 @@ document.write(`
 </ul>
 <p><img alt=" " src="../_images/bayes_worked_example.png" /></p>
 </section>
-<section id="another-worked-example">
-<h2>Another worked example<a class="headerlink" href="#another-worked-example" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>Another worked example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A disease has a incidence rate in the general population of 0.1%.</p></li>
 <li><p>A test has been developed:</p>
@@ -573,6 +593,7 @@ But, in the above example ‘lunch’ is given 0 probability in spam as it has n
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-worked-example">A worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-worked-example">Another worked example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Another worked example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-multinomial-naive-bayes">Naive Bayes (Multinomial Naive Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes Classifier</a></li>
 </ul>

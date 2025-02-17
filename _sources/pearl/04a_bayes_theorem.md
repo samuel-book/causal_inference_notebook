@@ -57,6 +57,33 @@ https://youtu.be/pYxNSUDSFH4
 
 ## A worked example
 
+"Suppose you take a medical test and it comes back positive. How likely is it that you have the disease?"
+
+Our evidence (E) is a positive test.
+Our hypothesis (H) is that we have the disease.
+
+* *P(test|disease)* is the *sensitivity* of the test, and is the *likeihood* or *forward probability* in Bayes. It is the same as *P(E|H)*.
+
+* What we care about is the *inverse probability* to sensitivity - what is the probability of having the disease if the test is positive: *P(disease|test)* or *P(H|E)*.
+
+Let's consider a 40-year old woman:
+
+* The probability of getting breast cancer in a year is about 1 in 700. That is our *prior* probability.
+
+* The sensitivity of mammograms for a 40-year woman is 73 percent.
+
+* The false positive rate (1 - sensitivity) for a 40-year woman is about 12 percent.
+
+* A positive test can come from those with cancer (true positive) or those without (false positive). *P(T)* is therefore a weighted average of *P(T|D)* (sensitivity) and *P(T|~D)* (1 - specificity).
+
+* *P(T)* = (1/700 * 0.73) + (699/700 * 0.12) = 0.121
+
+* $P(D|T) = \frac{P(T|D)\times P(D)}{P(T)} = \frac{0.73\times 1/700}{0.121} = 0.0086$ (1 in 116).
+
+
+
+## Another worked example
+
 We are told a person is shy and likes to keep things tidy. Are they most likely a librarian?
 
 * Let us assume there are 20X more farmers than librarians (our population is a librarian + 21 farmer)
@@ -94,6 +121,10 @@ We are told a person is shy and likes to keep things tidy. Are they most likely 
 	* = 1/51= 0.0196 = ~2%
 
 ![](images/bayes_worked_example_2.png)
+
+
+
+
 
 
 ## Naive Bayes (Multinomial Naive Bayes)
