@@ -4,6 +4,8 @@
 
 * **Antecedent**: An antecedent in causal models refers to a preceding event, condition, or characteristic that influences or determines a subsequent outcome.
 
+* **Augmented Inverse Probability Weighting (AIPW)** is a doubly robust statistical method for estimating causal effects, particularly average treatment effects (ATEs). It combines two approaches: inverse probability weighting (IPW) and outcome regression modeling, making it more reliable than either method alone when causal assumptions are met. AIPW requires only either the propensity score model (predicting treatment assignment) or the outcome model (predicting treatment effect) to be correctly specified. This property reduces bias compared to methods that rely on a single model.
+
 * **Average treatment effect**: the difference in mean outcomes between treated and untreated patients across a population (often a population of patients who are considered eligible for treatment). In outcome models the *counterfactual* outcomes for each patient for when they do or or do not receive treatment may be predicted (and averaged across the population). In clinical trails it is the average difference between treated and untreated outcomes (see also *intention-to-treat* and *per-protocol analysis*).
 
 * **Backtracking counterfactuals**: an approach to causal reasoning where changes are traced backward through a causal chain while preserving the original causal laws. Unlike traditional interventional counterfactuals, backtracking allows both downstream and upstream variables to change in response to a counterfactual scenario. This allows linkage between causative factors.
