@@ -106,6 +106,8 @@
 
 * **Survival bias**: See *immortal time bias*.
 
+* **T-Learner**: A T-learning approach uses separate two or more models for untreated and treated patients. It is a method that allows for examination of heterogenous treatment effects in isolated subgroups.
+
 * **Target trial emulation**: Target trial emulation is a framework that applies the principles of randomized clinical trials (RCTs) to observational data to estimate the causal effects of interventions. The process begins by designing a hypothetical randomized trial (the "target trial") that would ideally answer the research question. This protocol includes: 1) Eligibility criteria, 2) Treatment strategies
 Assignment procedures, 3) Follow-up period, 4) Outcome definitions, 5) Statistical analysis plan. 
 
