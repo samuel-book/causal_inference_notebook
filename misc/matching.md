@@ -8,7 +8,7 @@ An AI-generated podcast on this paper (generated using Google NotebookLM) is ava
 
 ## Matching vs. adjustment, and double robustness
 
-* **Matching** seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five key ingredients:
+* **Matching** seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five (or six) key ingredients:
 
     1. **Selection of covariates (features)**: We must decide what features about a patient are important in finding matches between treated and untreated patients. These should reflect those factors which are influential in treatment decisions.
     
@@ -19,6 +19,8 @@ An AI-generated podcast on this paper (generated using Google NotebookLM) is ava
     4. **Assess quality of matching**: Check quality of matching, and iterate steps 2 and 3 if necessary.
     
     5. **Analysis of the outcome and estimation of the treatment effect**: Once matching is of sufficient quality the treatment effect may be estimated. Imperfect matching may also be compensated for by *Adjustment* to give *Double Robustness* (see below).
+    
+    6. After this, consider the possible limitations of matching.
 
 * **Adjustment** seeks to compensate for differences between treated and untreated people, such as by including those factors that influence treatment decision in an outcome model. 
 
@@ -94,6 +96,30 @@ It is crucial to assess balance across the full set of covariates and potentiall
 ## Analysis
 
 With perfect matching, the difference in outcomes between untreated and treated patients should reflect the treatment effect size. Imperfect matching may be allowed and corrected for using Imperfect matching may also be compensated for by *Adjustment* to give *Double Robustness*.
+
+## Issues to consider
+
+Even after employing matching methods, several important issues can still exist when estimating causal effects from observational data. Matching is primarily a "design" stage aimed at improving the comparability of treated and control groups based on observed covariates, but it doesn't eliminate all potential sources of bias or uncertainty.
+
+Here are some key issues that can persist after matching:
+
+* **Unobserved Confounding**: Perhaps the most significant limitation is that matching can only balance the treated and control groups on observed covariates. The fundamental assumption of strong ignorability requires that there are no unobserved differences between the groups that are related to both the treatment assignment and the outcome. If such unobserved confounders exist, they can still bias the estimated treatment effect even after matching on observed characteristics. While matching on observed variables can reduce bias from correlated unobserved variables, any unobserved factor entirely independent of the observed ones remains a potential source of bias. Researchers often employ sensitivity analyses to assess how the conclusions might change in the presence of unobserved confounding.
+
+* **Lack of Common Support**: Matching aims to compare treated and control individuals who are similar in their observed characteristics. However, there might still be regions in the covariate space where there are treated individuals but no comparable controls (or vice versa), leading to a lack of complete overlap or common support. In such cases, estimating the treatment effect for individuals outside the region of common support would rely heavily on extrapolation, which can be unreliable. While some matching methods like nearest neighbour with calipers can implicitly handle this by not selecting matches outside a certain range, other methods might require explicit restriction of the analysis to the region of common support. This issue can also affect the generalisability of the findings.
+
+* **Model Dependence in Outcome Analysis**: After matching, the final estimation of the treatment effect often involves regression adjustment using the matched samples. While matching can reduce the dependence on the functional form of the outcome model, the results can still be influenced by model misspecification. The source notes that matching and regression adjustment are often best used in combination, akin to "double robustness". However, if the outcome model is incorrectly specified, particularly in the presence of remaining imbalance or non-linear relationships, the treatment effect estimate might still be biased.
+
+* **Variance Estimation**: Determining the appropriate way to estimate the variance of the treatment effect after matching is a complex and debated topic. Some researchers argue that the uncertainty introduced by the estimation of the propensity score and the matching process itself needs to be accounted for in the variance estimation. Others adopt an approach similar to randomised experiments, conditioning on the covariates and treating them as fixed. The source mentions that under fairly general conditions, using estimated rather than true propensity scores might lead to an overestimate of variance. Bootstrap procedures are sometimes used to account for the uncertainty in matching.
+
+* **Handling Missing Covariate Data**: Matching methods typically assume fully observed covariates. In practice, missing data is common and can complicate the matching process. While strategies like imputation and including missingness indicators in the propensity score model exist, they do not entirely resolve the challenges posed by missing information and can introduce their own assumptions and uncertainties. Furthermore, balance diagnostics for settings with missing covariate values are an area needing further development.
+
+* **Choice Between Matching Methods**: The paper highlights that there is a wide variety of matching methods available, and there is limited definitive guidance on how to select the most appropriate method for a given situation. While the primary advice is to choose the method that yields the best balance on observed covariates, defining "best balance" across multiple covariates is not always straightforward. Researchers might need to try several methods and compare the resulting balance diagnostics.
+
+* **Multiple Treatment Doses**: The discussed matching methods are primarily focused on situations with a binary treatment (treated vs. control). When dealing with multiple levels or doses of a treatment, standard matching approaches become more complex. While generalisations of the propensity score exist for such scenarios, assessing balance and interpreting results can be challenging.
+
+* **Stable Unit Treatment Value Assumption (SUTVA)**: Matching focuses on creating comparable groups of individuals but does not address violations of the Stable Unit Treatment Value Assumption (SUTVA). SUTVA assumes that the outcome of one individual is not affected by the treatment assignment of others (no interference) and that there are no different forms or versions of each treatment level. If SUTVA is violated (e.g., due to spillover effects), matching on individual-level covariates will not address the resulting bias.
+
+In summary, while matching methods are powerful tools for improving causal inference from observational studies by addressing bias due to observed confounding, they do not provide a perfect solution. Researchers must remain aware of the inherent limitations and potential issues that can persist after matching, such as unobserved confounding, lack of common support, model dependence, and challenges in variance estimation. Careful consideration of the assumptions, thorough diagnostic checks, and, where possible, sensitivity analyses are crucial for drawing reliable causal inferences.
 
 
 
