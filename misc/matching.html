@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'misc/matching';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -357,7 +355,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-principles-of-matching">Key principles of matching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-of-variable">Choice of variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-methods">Matching methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-macthing">Assessing quality of macthing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-matching">Assessing quality of matching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
 </ul>
             </nav>
@@ -412,15 +410,16 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Exact matching</strong>. This method aims to find individuals with identical values on all chosen covariates. However, it can be difficult to implement with many covariates, potentially leading to many unmatched individuals. <strong>Coarsened exact matching (CEM)</strong> performs exact matching on broader ranges (bins) of variables.</p></li>
 <li><p><strong>Mahalanobis distance matching</strong>. This method uses the Mahalanobis distance to measure the similarity between individuals based on the covariates. It works best with fewer than 8 continuous variables that are approximately normally distributed. It can be combined with propensity score calipers. Mahalanobis distance is distance after standardising data (to give mean=0, SD=1.0) and taking account of covariation; it is equivalent to performing normal Euclidian distances on standardised data that has also been through principal component analysis.</p></li>
-<li><p><strong>Propensity score matching</strong>. This approach uses the propensity score, which is the probability of receiving treatment given the observed covariates, to create matched groups with similar covariate distributions. Matching can be done on the propensity score itself or the <strong>linear propensity score</strong> <span class="math notranslate nohighlight">\(D_{ij} = |X_i\hat{\beta} - X_j\hat{\beta}|\)</span></p></li>
+<li><p><strong>Propensity score matching</strong>. This approach uses the propensity score, which is the probability of receiving treatment given the observed covariates, to create matched groups with similar covariate distributions. Matching can be done on the propensity score itself or the <strong>linear propensity score</strong> (which can often give better matching).</p></li>
+<li><p><strong>Calliper</strong>: The closest control and treatment match may not be close. A <em>calliper</em> rejects matches above a given allowed distance.</p></li>
 <li><p><strong>Nearest neighbour matching</strong>. This method matches each treated individual to one or more control individuals with the smallest distance (based on a defined measure like propensity score). This can be <strong>1:1</strong> matching or <strong>k:1</strong> matching (ratio matching) where each treated individual is matched to <em>k</em> control individuals. <strong>Optimal matching</strong> considers the overall set of matches to minimise a global distance measure, as opposed to simple (“greedy”) nearest neighbour matching where the order of matching matters. Matching can be done <strong>with or without replacement</strong>. <strong>Variable ratio matching</strong> allows the number of matches to vary for different treated individuals.</p></li>
 <li><p><strong>Subclassification</strong>. This method divides the sample into subgroups (subclasses) based on similarity, often using quantiles of the propensity score. Treatment effects are then estimated within each subclass and aggregated.</p></li>
 <li><p><strong>Full matching</strong>. This is a more sophisticated form of subclassification that automatically selects the number of matched sets, with each set containing at least one treated and one control individual.</p></li>
 <li><p><strong>Weighting adjustments</strong>. These methods assign weights to individuals based on their propensity scores to create pseudo-populations where the covariate distributions are balanced. Examples include <strong>inverse probability of treatment weighting (IPTW)</strong> for estimating the ATE, <strong>weighting by the odds</strong> for estimating the ATT, and <strong>kernel weighting</strong>.</p></li>
 </ul>
 </section>
-<section id="assessing-quality-of-macthing">
-<h2>Assessing quality of macthing<a class="headerlink" href="#assessing-quality-of-macthing" title="Link to this heading">#</a></h2>
+<section id="assessing-quality-of-matching">
+<h2>Assessing quality of matching<a class="headerlink" href="#assessing-quality-of-matching" title="Link to this heading">#</a></h2>
 <p>The quality of matching is assessed using a range of key methods, primarily focusing on determining the balance of covariates between the treated and control groups in the matched samples. Balance is defined as the similarity of the empirical distributions of the full set of covariates in the matched treated and control groups. The goal is for the treatment to be unrelated to the covariates after matching.</p>
 <p>Here are the key methods used to assess the quality of matching, as described in the sources:</p>
 <ol class="arabic simple">
@@ -522,7 +521,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-principles-of-matching">Key principles of matching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-of-variable">Choice of variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-methods">Matching methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-macthing">Assessing quality of macthing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-matching">Assessing quality of matching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
 </ul>
   </nav></div>

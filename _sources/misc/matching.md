@@ -47,7 +47,9 @@ The following methods aim to create comparable treated and control groups in obs
 
 * **Mahalanobis distance matching**. This method uses the Mahalanobis distance to measure the similarity between individuals based on the covariates. It works best with fewer than 8 continuous variables that are approximately normally distributed. It can be combined with propensity score calipers. Mahalanobis distance is distance after standardising data (to give mean=0, SD=1.0) and taking account of covariation; it is equivalent to performing normal Euclidian distances on standardised data that has also been through principal component analysis.
 
-* **Propensity score matching**. This approach uses the propensity score, which is the probability of receiving treatment given the observed covariates, to create matched groups with similar covariate distributions. Matching can be done on the propensity score itself or the **linear propensity score** $D_{ij} = |X_i\hat{\beta} - X_j\hat{\beta}|$
+* **Propensity score matching**. This approach uses the propensity score, which is the probability of receiving treatment given the observed covariates, to create matched groups with similar covariate distributions. Matching can be done on the propensity score itself or the **linear propensity score** (which can often give better matching).
+
+* **Calliper**: The closest control and treatment match may not be close. A *calliper* rejects matches above a given allowed distance.
 
 * **Nearest neighbour matching**. This method matches each treated individual to one or more control individuals with the smallest distance (based on a defined measure like propensity score). This can be **1:1** matching or **k:1** matching (ratio matching) where each treated individual is matched to *k* control individuals. **Optimal matching** considers the overall set of matches to minimise a global distance measure, as opposed to simple ("greedy") nearest neighbour matching where the order of matching matters. Matching can be done **with or without replacement**. **Variable ratio matching** allows the number of matches to vary for different treated individuals.
 
@@ -57,7 +59,7 @@ The following methods aim to create comparable treated and control groups in obs
 
 * **Weighting adjustments**. These methods assign weights to individuals based on their propensity scores to create pseudo-populations where the covariate distributions are balanced. Examples include **inverse probability of treatment weighting (IPTW)** for estimating the ATE, **weighting by the odds** for estimating the ATT, and **kernel weighting**.
 
-## Assessing quality of macthing
+## Assessing quality of matching
 
 The quality of matching is assessed using a range of key methods, primarily focusing on determining the balance of covariates between the treated and control groups in the matched samples. Balance is defined as the similarity of the empirical distributions of the full set of covariates in the matched treated and control groups. The goal is for the treatment to be unrelated to the covariates after matching.
 
