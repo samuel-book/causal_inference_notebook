@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matching &#8212; Causal Inference Notebook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'misc/matching';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bradford Hill criteria" href="bradford_hill.html" />
+    <link rel="prev" title="Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke" href="../1_dags/01_dag.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Causal Inference Notebook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Causal Inference Notebook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Causal Inference Notebook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General info</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Book of Why (Judea Pearl)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pearl/01_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/02_ladder_of_causation.html">The ladder of causation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/03_genesis_of_causal_inference.html">From Buccaneers to Guinea Pigs: The genesis of Causal Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04a_bayes_theorem.html">Bayes and causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pearl/04b_bayesian_networks.html">Bayesian networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Directed Acyclic Graphs (DAGs)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_dags/01_dag.html">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bradford_hill.html">Bradford Hill criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bias.html">Types of bias in observational studies</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../2_deconfounding/deconfounding.html">Deconfounding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="causal_discovery.html">Key causal discovery methods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/misc/matching.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-vs-adjustment-and-double-robustness">Matching vs. adjustment, and double robustness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-principles-of-matching">Key principles of matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-of-variable">Choice of variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-methods">Matching methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-macthing">Assessing quality of macthing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matching">
+<h1>Matching<a class="headerlink" href="#matching" title="Link to this heading">#</a></h1>
+<p>These notes are based mostly on:</p>
+<p>Stuart EA. Matching methods for causal inference: A review and a look forward. Stat Sci. 2010 Feb 1;25(1):1-21. doi: 10.1214/09-STS313. PMID: 20871802; PMCID: PMC2943670. [<a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2943670/">https://pmc.ncbi.nlm.nih.gov/articles/PMC2943670/</a>]</p>
+<p>An AI-generated podcast on this paper (generated using Google NotebookLM) is available at: [<a class="reference external" href="https://youtu.be/Vhcmnt1E66M">https://youtu.be/Vhcmnt1E66M</a>]</p>
+<section id="matching-vs-adjustment-and-double-robustness">
+<h2>Matching vs. adjustment, and double robustness<a class="headerlink" href="#matching-vs-adjustment-and-double-robustness" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Matching</strong> seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five key ingredients:</p>
+<ol class="arabic simple">
+<li><p><strong>Selection of covariates (features)</strong>: We must decide what features about a patient are important in finding matches between treated and untreated patients. These should reflect those factors which are influential in treatment decisions.</p></li>
+<li><p><strong>Distance measure</strong>: We must find a way of measuring how patients differ from each other. Minimising the distance measure will minimise the difference between treated and untreated patients.</p></li>
+<li><p><strong>Matching method</strong>: We define the method used to find matches, given our selection of covariates and our resulting distance measure.</p></li>
+<li><p><strong>Assess quality of matching</strong>: Check quality of matching, and iterate steps 2 and 3 if necessary.</p></li>
+<li><p><strong>Analysis of the outcome and estimation of the treatment effect</strong>: Once matching is of sufficient quality the treatment effect may be estimated. Imperfect matching may also be compensated for by <em>Adjustment</em> to give <em>Double Robustness</em> (see below).</p></li>
+</ol>
+</li>
+<li><p><strong>Adjustment</strong> seeks to compensate for differences between treated and untreated people, such as by including those factors that influence treatment decision in an outcome model.</p></li>
+<li><p><strong>Double Robustness</strong> combines <em>matching</em> and <em>adjustment</em>. It gives two chances of isolating the treatment effect. It will also allow for fine-tuning of estimating the treatment effect - with matching giving us ‘similar’ untreated and treated groups, and adjustment correcting for remaining differences between the groups.</p></li>
+</ul>
+</section>
+<section id="key-principles-of-matching">
+<h2>Key principles of matching<a class="headerlink" href="#key-principles-of-matching" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>The principle of strong ingnorability</strong> requires:</p>
+<ol class="arabic simple">
+<li><p><strong>Unconfoundedness</strong>: This means that potential outcomes are independent of treatment <em>assignment</em> once we control for observed covariates. That is, We have identified and allowed for all the factors could affect both treatment choice and outcome.</p></li>
+<li><p><strong>Common support</strong> (also called overlap): For all subjects there should be neither 0% or 100% probability of receiving treatment - there must always be the chance of the opposite treatment decision. Patients may also be excluded if their probability of receiving treatment lies outside the range of probabilities in the opposite group (so both untreated and treated groups share the same range of probabilities of receiving treatment).</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="choice-of-variable">
+<h2>Choice of variable<a class="headerlink" href="#choice-of-variable" title="Link to this heading">#</a></h2>
+<p>To satisfy the assumption of ignorable treatment assignment, it is important to include in the matching procedure all variables known to be related to both treatment assignment and the outcome. One type of variable that should <strong>not</strong> be included in the matching process are those that may have been affected by the treatment of interest (e.g. we would not match on subsequent treatment decisions or outcomes).</p>
+</section>
+<section id="matching-methods">
+<h2>Matching methods<a class="headerlink" href="#matching-methods" title="Link to this heading">#</a></h2>
+<p>The following methods aim to create comparable treated and control groups in observational studies by balancing the distributions of observed covariates. The choice of method depends on the specific research question, the characteristics of the data, and the estimand of interest (e.g., ATT or ATE).</p>
+<ul class="simple">
+<li><p><strong>Exact matching</strong>. This method aims to find individuals with identical values on all chosen covariates. However, it can be difficult to implement with many covariates, potentially leading to many unmatched individuals. <strong>Coarsened exact matching (CEM)</strong> performs exact matching on broader ranges (bins) of variables.</p></li>
+<li><p><strong>Mahalanobis distance matching</strong>. This method uses the Mahalanobis distance to measure the similarity between individuals based on the covariates. It works best with fewer than 8 continuous variables that are approximately normally distributed. It can be combined with propensity score calipers. Mahalanobis distance is distance after standardising data (to give mean=0, SD=1.0) and taking account of covariation; it is equivalent to performing normal Euclidian distances on standardised data that has also been through principal component analysis.</p></li>
+<li><p><strong>Propensity score matching</strong>. This approach uses the propensity score, which is the probability of receiving treatment given the observed covariates, to create matched groups with similar covariate distributions. Matching can be done on the propensity score itself or the <strong>linear propensity score</strong> <span class="math notranslate nohighlight">\(D_{ij} = |X_i\hat{\beta} - X_j\hat{\beta}|\)</span></p></li>
+<li><p><strong>Nearest neighbour matching</strong>. This method matches each treated individual to one or more control individuals with the smallest distance (based on a defined measure like propensity score). This can be <strong>1:1</strong> matching or <strong>k:1</strong> matching (ratio matching) where each treated individual is matched to <em>k</em> control individuals. <strong>Optimal matching</strong> considers the overall set of matches to minimise a global distance measure, as opposed to simple (“greedy”) nearest neighbour matching where the order of matching matters. Matching can be done <strong>with or without replacement</strong>. <strong>Variable ratio matching</strong> allows the number of matches to vary for different treated individuals.</p></li>
+<li><p><strong>Subclassification</strong>. This method divides the sample into subgroups (subclasses) based on similarity, often using quantiles of the propensity score. Treatment effects are then estimated within each subclass and aggregated.</p></li>
+<li><p><strong>Full matching</strong>. This is a more sophisticated form of subclassification that automatically selects the number of matched sets, with each set containing at least one treated and one control individual.</p></li>
+<li><p><strong>Weighting adjustments</strong>. These methods assign weights to individuals based on their propensity scores to create pseudo-populations where the covariate distributions are balanced. Examples include <strong>inverse probability of treatment weighting (IPTW)</strong> for estimating the ATE, <strong>weighting by the odds</strong> for estimating the ATT, and <strong>kernel weighting</strong>.</p></li>
+</ul>
+</section>
+<section id="assessing-quality-of-macthing">
+<h2>Assessing quality of macthing<a class="headerlink" href="#assessing-quality-of-macthing" title="Link to this heading">#</a></h2>
+<p>The quality of matching is assessed using a range of key methods, primarily focusing on determining the balance of covariates between the treated and control groups in the matched samples. Balance is defined as the similarity of the empirical distributions of the full set of covariates in the matched treated and control groups. The goal is for the treatment to be unrelated to the covariates after matching.</p>
+<p>Here are the key methods used to assess the quality of matching, as described in the sources:</p>
+<ol class="arabic simple">
+<li><p><strong>Numerical Diagnostics</strong>:</p>
+<ul class="simple">
+<li><p><strong>Standardized Difference of Means</strong>: This is one of the most common numerical balance diagnostics. It is calculated as the difference in means of each covariate, divided by the standard deviation in the full treated group. This measure, sometimes called “standardized bias” or “standardized difference in means,” is compared before and after matching to see if balance has improved. The same standard deviation should be used for standardization before and after matching. This should be computed for each covariate, as well as two-way interactions and squares. For binary covariates, either this formula can be used, or a simple difference in proportions can be calculated.</p></li>
+<li><p><strong>Rubin’s Balance Measures</strong>: Rubin (2001) presents three balance measures based on theory in Rubin and Thomas (1996):</p>
+<ul>
+<li><p>The standardized difference of means of the propensity score.</p></li>
+<li><p>The ratio of the variances of the propensity score in the treated and control groups.</p></li>
+<li><p>For each covariate, the ratio of the variance of the residuals orthogonal to the propensity score in the treated and control groups. For regression adjustment to be trustworthy, Rubin (2001) suggests that absolute standardized differences of means should be less than 0.25 and variance ratios should be between 0.5 and 2.</p></li>
+</ul>
+</li>
+<li><p><strong>Caution Against Hypothesis Tests and P-values</strong>: Hypothesis tests and p-values (e.g. t-tests) should not be used as measures of balance. This is because balance is an in-sample property, and hypothesis tests conflate changes in balance with changes in statistical power. Th</p></li>
+</ul>
+</li>
+<li><p><strong>Graphical Diagnostics</strong>:</p>
+<ul class="simple">
+<li><p><strong>Distribution of Propensity Scores</strong>: Examining the distribution of the propensity scores in the original and matched groups is a helpful first step. This is also useful for assessing common support. For weighting or subclassification, these plots can show points with their size proportional to their weight. Figure 1 in the source provides an example of adequate overlap.</p></li>
+<li><p><strong>Quantile-Quantile (QQ) Plots</strong>: For continuous covariates, QQ plots compare the empirical distributions of each variable in the treated and control groups by plotting their quantiles against each other. If the distributions are identical, all points would lie on the 45-degree line. This can also be done for squared variables and two-way interactions to assess balance in second moments.</p></li>
+<li><p><strong>Weighted Boxplots</strong>: For weighting methods, weighted boxplots can provide similar information to QQ plots by visualising the distribution of covariates in the weighted treated and control groups.</p></li>
+<li><p><strong>Plot of Standardized Differences of Mean</strong>: A plot showing the standardized difference of means for each covariate before and after matching provides a quick overview of whether balance has improved.</p></li>
+</ul>
+</li>
+</ol>
+<p>It is crucial to assess balance across the full set of covariates and potentially their interactions and non-linear terms to ensure the quality of the matching. If the resulting matched samples are not adequately balanced, researchers should consider iterating with different matching methods or distance measures until a well-balanced sample is achieved. If balance cannot be achieved, the data may not be suitable for reliably estimating causal effects without strong modelling assumptions.</p>
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h2>
+<p>With perfect matching, the difference in outcomes between untreated and treated patients should reflect the treatment effect size. Imperfect matching may be allowed and corrected for using Imperfect matching may also be compensated for by <em>Adjustment</em> to give <em>Double Robustness</em>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./misc"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../1_dags/01_dag.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Graphviz plot of Directed Acyclic Graph (DAG) for thrombolysis use in stroke</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="bradford_hill.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bradford Hill criteria</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-vs-adjustment-and-double-robustness">Matching vs. adjustment, and double robustness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-principles-of-matching">Key principles of matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-of-variable">Choice of variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-methods">Matching methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-quality-of-macthing">Assessing quality of macthing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The SAMueL Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
