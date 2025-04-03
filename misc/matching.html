@@ -377,13 +377,14 @@ document.write(`
 <section id="matching-vs-adjustment-and-double-robustness">
 <h2>Matching vs. adjustment, and double robustness<a class="headerlink" href="#matching-vs-adjustment-and-double-robustness" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Matching</strong> seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five key ingredients:</p>
+<li><p><strong>Matching</strong> seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five (or six) key ingredients:</p>
 <ol class="arabic simple">
 <li><p><strong>Selection of covariates (features)</strong>: We must decide what features about a patient are important in finding matches between treated and untreated patients. These should reflect those factors which are influential in treatment decisions.</p></li>
 <li><p><strong>Distance measure</strong>: We must find a way of measuring how patients differ from each other. Minimising the distance measure will minimise the difference between treated and untreated patients.</p></li>
 <li><p><strong>Matching method</strong>: We define the method used to find matches, given our selection of covariates and our resulting distance measure.</p></li>
 <li><p><strong>Assess quality of matching</strong>: Check quality of matching, and iterate steps 2 and 3 if necessary.</p></li>
 <li><p><strong>Analysis of the outcome and estimation of the treatment effect</strong>: Once matching is of sufficient quality the treatment effect may be estimated. Imperfect matching may also be compensated for by <em>Adjustment</em> to give <em>Double Robustness</em> (see below).</p></li>
+<li><p>After this, consider the possible limitations of matching.</p></li>
 </ol>
 </li>
 <li><p><strong>Adjustment</strong> seeks to compensate for differences between treated and untreated people, such as by including those factors that influence treatment decision in an outcome model.</p></li>

@@ -8,7 +8,7 @@ An AI-generated podcast on this paper (generated using Google NotebookLM) is ava
 
 ## Matching vs. adjustment, and double robustness
 
-* **Matching** seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five key ingredients:
+* **Matching** seeks to create comparable groups of treated and untreated people, mimicking randomisation of giving treatment. If matching is perfect then the difference in outcomes between treated and untreated people will be entirely due to the treatment. Matching is based on five (or six) key ingredients:
 
     1. **Selection of covariates (features)**: We must decide what features about a patient are important in finding matches between treated and untreated patients. These should reflect those factors which are influential in treatment decisions.
     
@@ -19,6 +19,8 @@ An AI-generated podcast on this paper (generated using Google NotebookLM) is ava
     4. **Assess quality of matching**: Check quality of matching, and iterate steps 2 and 3 if necessary.
     
     5. **Analysis of the outcome and estimation of the treatment effect**: Once matching is of sufficient quality the treatment effect may be estimated. Imperfect matching may also be compensated for by *Adjustment* to give *Double Robustness* (see below).
+    
+    6. After this, consider the possible limitations of matching.
 
 * **Adjustment** seeks to compensate for differences between treated and untreated people, such as by including those factors that influence treatment decision in an outcome model. 
 
