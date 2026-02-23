@@ -2,8 +2,6 @@
 
 #Bayes #Causal-Inference 
 
-See also [[04_Bayesianism]]
-
 Rev Thomas Bayes 1702-1761.
 
 ![](images/thomas_bayes.png)
@@ -17,10 +15,9 @@ Bayes genius was to calculate the probably of a cause (the hypothesis) from the 
 
 ## Bayes theorem classification
 
-From StatQuest...
-
 ### Bayes theorem
-https://youtu.be/9wCnvr7Xw4E
+
+From StatQuest...: https://youtu.be/9wCnvr7Xw4E
 
 ![](images/conditional_probabilties.png)
 
